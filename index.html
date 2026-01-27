@@ -9,8 +9,10 @@
         :root {
             --primary: #4da6ff;
             --primary-dark: #3399ff;
+            --primary-light: #e6f2ff;
             --dark: #222;
             --light: #f8f9fa;
+            --white: #ffffff;
         }
         * {
             margin: 0; padding: 0; box-sizing: border-box;
@@ -19,6 +21,7 @@
         body {
             line-height: 1.6;
             color: #333;
+            background-color: var(--white);
         }
         .container {
             width: 90%;
@@ -28,10 +31,10 @@
         }
         /* Top Contact Bar */
         .top-bar {
-            background: var(--dark);
+            background: var(--primary-dark);
             color: white;
-            padding: 10px 0;
-            font-size: 14px;
+            padding: 12px 0;
+            font-size: 15px;
         }
         .top-bar .container {
             display: flex;
@@ -42,35 +45,35 @@
         .contact-info {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 25px;
         }
         .contact-info span {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
         .contact-info i {
-            color: var(--primary);
+            color: var(--white);
         }
         .social-links {
             display: flex;
-            gap: 15px;
+            gap: 20px;
         }
         .social-links a {
             color: white;
-            font-size: 18px;
-            transition: color 0.3s;
+            font-size: 22px;
+            transition: transform 0.3s;
         }
         .social-links a:hover {
-            color: var(--primary);
+            transform: translateY(-3px);
         }
         /* Header */
         header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: var(--primary);
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
         .header-content {
             display: flex;
@@ -81,66 +84,109 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
         }
         .logo-img {
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             object-fit: contain;
+            border-radius: 50%;
+            background: transparent;
+            padding: 5px;
         }
         .logo-text {
             display: flex;
             flex-direction: column;
         }
         .logo-text h1 {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
-            color: var(--dark);
+            color: var(--white);
             margin: 0;
-        }
-        .logo-text h1 span {
-            color: var(--primary);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
         }
         .logo-text p {
-            font-size: 14px;
-            color: #666;
+            font-size: 15px;
+            color: var(--white);
             margin: 0;
             font-style: italic;
+            opacity: 0.9;
         }
         nav ul {
             display: flex;
             list-style: none;
             align-items: center;
-            gap: 30px;
+            gap: 35px;
+            margin: 0;
+            padding: 0;
         }
         nav ul li a {
             text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
+            color: var(--white);
+            font-weight: 600;
+            transition: all 0.3s;
             display: flex;
             align-items: center;
             gap: 8px;
+            padding: 8px 15px;
+            border-radius: 5px;
         }
         nav ul li a:hover, nav ul li a.active {
-            color: var(--primary);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
         .quote-btn {
-            background: var(--primary);
-            color: white;
-            padding: 10px 25px;
-            border-radius: 5px;
+            background: var(--white);
+            color: var(--primary-dark);
+            padding: 12px 30px;
+            border-radius: 8px;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
         .quote-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
+            background: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        /* Dark Blue Box */
+        .dark-blue-box {
+            background: #1a2980;
+            background: linear-gradient(to right, #1a2980, #26d0ce);
+            color: white;
+            padding: 15px 0;
+            margin-top: 5px;
+        }
+        .dark-blue-box .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .company-name {
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .box-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .box-content a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        .box-content a:hover {
+            opacity: 0.8;
         }
         /* Hero */
         .hero {
-            padding: 120px 0 80px;
+            padding: 100px 0 80px;
             background: linear-gradient(135deg, #f5f9ff 0%, #e6f2ff 100%);
         }
         .hero-content {
@@ -156,11 +202,36 @@
             font-size: 3rem;
             margin-bottom: 20px;
             color: var(--dark);
+            line-height: 1.2;
         }
         .hero-text p {
             font-size: 1.2rem;
-            color: #666;
+            color: #555;
             margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .hero-buttons .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 35px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        .hero-buttons .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
         .hero-image {
             flex: 1;
@@ -169,33 +240,8 @@
         }
         .hero-image img {
             max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 500;
-            margin-right: 15px;
-            transition: all 0.3s;
-        }
-        .btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
         }
         /* Services */
         .services {
@@ -211,6 +257,12 @@
             color: var(--dark);
             margin-bottom: 15px;
         }
+        .section-title p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -219,26 +271,38 @@
         }
         .service-card {
             background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 35px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
             text-align: center;
-            transition: transform 0.3s;
+            transition: all 0.3s;
+            border: 1px solid rgba(77, 166, 255, 0.1);
         }
         .service-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-color: var(--primary);
         }
         .service-icon {
-            width: 70px;
-            height: 70px;
-            background: #e6f2ff;
+            width: 80px;
+            height: 80px;
+            background: var(--primary-light);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            color: var(--primary);
-            font-size: 28px;
+            margin: 0 auto 25px;
+            color: var(--primary-dark);
+            font-size: 32px;
+        }
+        .service-card h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .service-card p {
+            color: #666;
+            line-height: 1.7;
         }
         /* Footer */
         footer {
@@ -246,37 +310,58 @@
             color: white;
             padding: 60px 0 20px;
         }
-        .footer-grid {
+        .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
             margin-bottom: 40px;
         }
-        .footer-col h3 {
+        .footer-about h3 {
             margin-bottom: 20px;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            color: var(--white);
         }
-        .footer-col ul {
+        .footer-about p {
+            color: #bbb;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .footer-contact h4 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            color: var(--white);
+        }
+        .footer-contact ul {
             list-style: none;
         }
-        .footer-col ul li {
-            margin-bottom: 10px;
+        .footer-contact ul li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
         }
-        .footer-col ul li a {
-            color: #bbb;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .footer-col ul li a:hover {
+        .footer-contact ul li i {
             color: var(--primary);
+            margin-top: 3px;
         }
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
             color: #bbb;
+            font-size: 14px;
         }
         /* Responsive */
+        @media (max-width: 992px) {
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .dark-blue-box .container {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+        }
         @media (max-width: 768px) {
             .top-bar .container {
                 flex-direction: column;
@@ -293,12 +378,36 @@
                 gap: 15px;
             }
             .hero-text h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
-            .btn {
-                display: block;
-                margin: 10px 0;
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .logo {
+                flex-direction: column;
                 text-align: center;
+                gap: 10px;
+            }
+            .logo-img {
+                width: 70px;
+                height: 70px;
+            }
+            nav ul {
+                gap: 10px;
+            }
+            nav ul li a {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+            .quote-btn {
+                padding: 10px 20px;
+                font-size: 14px;
             }
         }
     </style>
@@ -316,7 +425,6 @@
                 <a href="https://www.linkedin.com/company/asmtechservices/" target="_blank" title="LinkedIn">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <!-- Add more social links if needed -->
             </div>
         </div>
     </div>
@@ -326,8 +434,8 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    
-                  <img src="ASMlogo.jpeg" alt="ASM Tech Services Logo" class="logo-img"> 
+                    <!-- ADD YOUR LOGO HERE -->
+                    <img src="ASMlogo.jpeg" alt="ASM Tech Services Logo" class="logo-img"> 
                     <div class="logo-text">
                         <h1><span>ASM</span> Tech Services</h1>
                         <p>Quality IT Solutions & Consultancy</p>
@@ -339,12 +447,29 @@
                         <li><a href="#"><i class="fas fa-info-circle"></i> About Us</a></li>
                         <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
                         <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
-                        <li><a href="#" class="quote-btn"><i class="fas fa-file-alt"></i> Get Free Quote</a></li>
+                        <li><a href="requirements.html" class="quote-btn"><i class="fas fa-file-alt"></i> Get Free Quote</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
+
+    <!-- Dark Blue Box -->
+    <div class="dark-blue-box">
+        <div class="container">
+            <div class="company-name">ASM Tech Services</div>
+            <div class="box-content">
+                <span>Quality IT Solutions & Consultancy</span>
+                <a href="#"><i class="fas fa-home"></i> Home</a>
+                <a href="#"><i class="fas fa-info-circle"></i> About Us</a>
+                <a href="#services"><i class="fas fa-cogs"></i> Services</a>
+                <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="requirements.html" style="background: white; color: #1a2980; padding: 5px 15px; border-radius: 4px;">
+                    <i class="fas fa-file-alt"></i> Get Free Quote
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero -->
     <section class="hero">
@@ -354,8 +479,7 @@
                     <h1>Professional IT Consultancy & Infrastructure Solutions</h1>
                     <p>ASM Tech Services delivers reliable IT consultancy, infrastructure setup, and enterprise support services. We focus on server implementation, network infrastructure, and comprehensive asset verification for businesses.</p>
                     <div class="hero-buttons">
-                        <a href="#services" class="btn"><i class="fas fa-cogs"></i> Our Services</a>
-                        <a href="#contact" class="btn btn-outline"><i class="fas fa-phone"></i> Get Consultation</a>
+                        <a href="#services" class="btn"><i class="fas fa-cogs"></i> Explore Our Services</a>
                     </div>
                 </div>
                 <div class="hero-image">
@@ -422,44 +546,18 @@
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
+            <div class="footer-content">
+                <div class="footer-about">
                     <h3>ASM Tech Services</h3>
-                    <p>Providing reliable IT consultancy, infrastructure solutions, and asset verification services since 2013. We help businesses optimize their IT operations.</p>
-                    <div class="social-links" style="margin-top: 20px;">
-                        <a href="https://www.linkedin.com/company/asmtechservices/" target="_blank" title="LinkedIn">
-                            <i class="fab fa-linkedin fa-lg"></i>
-                        </a>
-                        <!-- Add more social links -->
-                    </div>
+                    <p>Providing reliable IT consultancy, infrastructure solutions, and asset verification services since 2013. We help businesses optimize their IT operations and achieve digital transformation goals.</p>
                 </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
-                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Our Services</h4>
-                    <ul>
-                        <li><a href="#services"><i class="fas fa-check"></i> IT Consultancy & Support</a></li>
-                        <li><a href="#services"><i class="fas fa-check"></i> Server Installation</a></li>
-                        <li><a href="#services"><i class="fas fa-check"></i> Desktop/Laptop Services</a></li>
-                        <li><a href="#services"><i class="fas fa-check"></i> IT Infrastructure Setup</a></li>
-                        <li><a href="#services"><i class="fas fa-check"></i> Asset Verification</a></li>
-                        <li><a href="#services"><i class="fas fa-check"></i> IT Security Solutions</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
+                <div class="footer-contact">
                     <h4>Contact Info</h4>
                     <ul>
                         <li><i class="fas fa-map-marker-alt"></i> Chennai, Tamilnadu, India</li>
                         <li><i class="fas fa-phone"></i> +91 824 867 6101</li>
                         <li><i class="fas fa-envelope"></i> info@asmtechservices.com</li>
-                        <li><i class="fas fa-clock"></i> 24/7 Support Available<</li>
+                        <li><i class="fas fa-clock"></i> 24/7 Support Available</li>
                     </ul>
                 </div>
             </div>
@@ -469,13 +567,16 @@
         </div>
     </footer>
 
+    <!-- Requirements Page HTML (Save as requirements.html) -->
+    <!-- This is included in the same file but should be saved separately -->
+
     <script>
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
+                if(targetId === '#' || targetId.includes('.html')) return;
                 
                 const targetElement = document.querySelector(targetId);
                 if(targetElement) {
