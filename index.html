@@ -26,11 +26,49 @@
             margin: 0 auto;
             padding: 0 15px;
         }
+        /* Top Contact Bar */
+        .top-bar {
+            background: var(--dark);
+            color: white;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .contact-info i {
+            color: var(--primary);
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        .social-links a {
+            color: white;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: var(--primary);
+        }
+        /* Header */
         header {
             background: white;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
+            position: sticky;
             top: 0;
             z-index: 1000;
         }
@@ -38,34 +76,71 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 15px 0;
         }
         .logo {
-            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .logo-text h1 {
+            font-size: 28px;
             font-weight: bold;
             color: var(--dark);
+            margin: 0;
         }
-        .logo span {
+        .logo-text h1 span {
             color: var(--primary);
+        }
+        .logo-text p {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+            font-style: italic;
         }
         nav ul {
             display: flex;
             list-style: none;
-        }
-        nav ul li {
-            margin-left: 30px;
+            align-items: center;
+            gap: 30px;
         }
         nav ul li a {
             text-decoration: none;
             color: #333;
             font-weight: 500;
             transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         nav ul li a:hover, nav ul li a.active {
             color: var(--primary);
         }
+        .quote-btn {
+            background: var(--primary);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .quote-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        /* Hero */
         .hero {
-            padding: 150px 0 80px;
+            padding: 120px 0 80px;
             background: linear-gradient(135deg, #f5f9ff 0%, #e6f2ff 100%);
         }
         .hero-content {
@@ -122,6 +197,7 @@
             background: var(--primary);
             color: white;
         }
+        /* Services */
         .services {
             padding: 80px 0;
             background: #f8f9fa;
@@ -164,6 +240,7 @@
             color: var(--primary);
             font-size: 28px;
         }
+        /* Footer */
         footer {
             background: var(--dark);
             color: white;
@@ -199,18 +276,21 @@
             border-top: 1px solid rgba(255,255,255,0.1);
             color: #bbb;
         }
+        /* Responsive */
         @media (max-width: 768px) {
-            .header-content {
+            .top-bar .container {
                 flex-direction: column;
+                gap: 10px;
                 text-align: center;
             }
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
             nav ul {
-                margin-top: 20px;
                 flex-wrap: wrap;
                 justify-content: center;
-            }
-            nav ul li {
-                margin: 0 10px 10px;
+                gap: 15px;
             }
             .hero-text h1 {
                 font-size: 2.2rem;
@@ -224,24 +304,49 @@
     </style>
 </head>
 <body>
+    <!-- Top Contact Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span><i class="fas fa-map-marker-alt"></i> Chennai, Tamilnadu, India</span>
+                <span><i class="fas fa-phone"></i> +91 824 867 6101</span>
+                <span><i class="fas fa-clock"></i> 24/7 Support Available</span>
+            </div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/company/asmtechservices/" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <!-- Add more social links if needed -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
     <header>
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <h1><span>ASM</span> Tech Services</h1>
+                    
+                  <img src="ASMlogo.jpeg" alt="ASM Tech Services Logo" class="logo-img"> 
+                    <div class="logo-text">
+                        <h1><span>ASM</span> Tech Services</h1>
+                        <p>Quality IT Solutions & Consultancy</p>
+                    </div>
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="#" class="active">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#" class="active"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-info-circle"></i> About Us</a></li>
+                        <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
+                        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                        <li><a href="#" class="quote-btn"><i class="fas fa-file-alt"></i> Get Free Quote</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
 
+    <!-- Hero -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -249,8 +354,8 @@
                     <h1>Professional IT Consultancy & Infrastructure Solutions</h1>
                     <p>ASM Tech Services delivers reliable IT consultancy, infrastructure setup, and enterprise support services. We focus on server implementation, network infrastructure, and comprehensive asset verification for businesses.</p>
                     <div class="hero-buttons">
-                        <a href="#services" class="btn">Our Services</a>
-                        <a href="#contact" class="btn btn-outline">Get Consultation</a>
+                        <a href="#services" class="btn"><i class="fas fa-cogs"></i> Our Services</a>
+                        <a href="#contact" class="btn btn-outline"><i class="fas fa-phone"></i> Get Consultation</a>
                     </div>
                 </div>
                 <div class="hero-image">
@@ -260,6 +365,7 @@
         </div>
     </section>
 
+    <!-- Services -->
     <section class="services" id="services">
         <div class="container">
             <div class="section-title">
@@ -313,31 +419,38 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer id="contact">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <h3>ASM Tech Services</h3>
                     <p>Providing reliable IT consultancy, infrastructure solutions, and asset verification services since 2013. We help businesses optimize their IT operations.</p>
+                    <div class="social-links" style="margin-top: 20px;">
+                        <a href="https://linkedin.com" target="_blank" title="LinkedIn">
+                            <i class="fab fa-linkedin fa-lg"></i>
+                        </a>
+                        <!-- Add more social links -->
+                    </div>
                 </div>
                 <div class="footer-col">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Our Services</h4>
                     <ul>
-                        <li><a href="#services">IT Consultancy & Support</a></li>
-                        <li><a href="#services">Server Installation</a></li>
-                        <li><a href="#services">Desktop/Laptop Services</a></li>
-                        <li><a href="#services">IT Infrastructure Setup</a></li>
-                        <li><a href="#services">Asset Verification</a></li>
-                        <li><a href="#services">IT Security Solutions</a></li>
+                        <li><a href="#services"><i class="fas fa-check"></i> IT Consultancy & Support</a></li>
+                        <li><a href="#services"><i class="fas fa-check"></i> Server Installation</a></li>
+                        <li><a href="#services"><i class="fas fa-check"></i> Desktop/Laptop Services</a></li>
+                        <li><a href="#services"><i class="fas fa-check"></i> IT Infrastructure Setup</a></li>
+                        <li><a href="#services"><i class="fas fa-check"></i> Asset Verification</a></li>
+                        <li><a href="#services"><i class="fas fa-check"></i> IT Security Solutions</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -346,17 +459,18 @@
                         <li><i class="fas fa-map-marker-alt"></i> Chennai, Tamilnadu, India</li>
                         <li><i class="fas fa-phone"></i> +91 824 867 6101</li>
                         <li><i class="fas fa-envelope"></i> info@asmtechservices.com</li>
-                        <li><i class="fas fa-clock"></i> 24/7 Support Available</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 10:00 AM - 7:00 PM</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 ASM Tech Services. All Rights Reserved.</p>
+                <p>&copy; 2023 ASM Tech Services. All Rights Reserved. | Professional IT Solutions Provider</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -366,13 +480,14 @@
                 const targetElement = document.querySelector(targetId);
                 if(targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetElement.offsetTop - 100,
                         behavior: 'smooth'
                     });
                 }
             });
         });
 
+        // Active link highlighting
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', function() {
                 document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
