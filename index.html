@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASM Tech Services - IT Solutions & Consultancy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4da6ff;
+            --primary-dark: #3399ff;
+            --dark: #222;
+            --light: #f8f9fa;
+        }
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--dark);
+        }
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+        .logo span {
+            color: var(--primary);
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-left: 30px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--primary);
+        }
+        /* Hero */
+        .hero {
+            padding: 150px 0 80px;
+            background: linear-gradient(135deg, #f5f9ff 0%, #e6f2ff 100%);
+        }
+        .hero-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            margin-right: 15px;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        /* Services */
+        .services {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: #e6f2ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary);
+            font-size: 28px;
+        }
+        /* About Section */
+        .about {
+            padding: 80px 0;
+        }
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 40px;
+        }
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        .footer-col h4 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        .footer-col ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-col ul li a:hover {
+            color: var(--primary);
+        }
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .contact-info li i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 20px;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bbb;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            nav ul li {
+                margin: 0 10px 10px;
+            }
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            .btn {
+                display: block;
+                margin: 10px 0;
+                text-align: center;
+            }
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                   <img src="ASMlogo.png" alt="ASM Tech Services Logo" class="logo-img"> 
+                    <h1><span>ASM</span> Tech Services</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="active">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Professional IT Consultancy & Infrastructure Solutions</h1>
+                    <p>ASM Tech Services delivers reliable IT consultancy, infrastructure setup, and enterprise support services. We focus on server implementation, network infrastructure, and comprehensive asset verification for businesses.</p>
+                    <div class="hero-buttons">
+                        <a href="#services" class="btn">Our Services</a>
+                        <a href="#contact" class="btn btn-outline">Get Consultation</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="IT Infrastructure Solutions">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About ASM Tech Services</h2>
+                    <p>With years of experience in IT consultancy and infrastructure management, ASM Tech Services specializes in providing end-to-end IT solutions for businesses of all sizes.</p>
+                    <p>Our expertise includes server implementation, network infrastructure setup, desktop/laptop support, and comprehensive asset verification services across global locations.</p>
+                    <p>We are committed to delivering reliable, scalable, and cost-effective IT solutions that enhance business productivity and efficiency.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Our IT Team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our IT Services</h2>
+                <p>Comprehensive IT consultancy, services, solutions, infrastructure support, and asset verification</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>IT Consultancy & Support</h3>
+                    <p>Expert IT consulting, server implementation, laptop & desktop support, network planning, and infrastructure design for optimal business operations.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Server Installation & Maintenance</h3>
+                    <p>Complete server setup, configuration, maintenance, and monitoring services for Windows and Linux environments.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Desktop & Laptop Services</h3>
+                    <p>Hardware repair, software installation, OS configuration, and troubleshooting for all major brands of desktops and laptops.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>IT Infrastructure Setup</h3>
+                    <p>Complete network infrastructure design, cabling, switch/router configuration, wireless setup, and security implementation.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>Asset Verification</h3>
+                    <p>Comprehensive asset tracking, verification, and management for all IT equipment across global locations with detailed reporting.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>IT Security Solutions</h3>
+                    <p>Security audits, firewall configuration, antivirus deployment, data protection, and compliance implementation for business security.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>ASM Tech Services</h3>
+                    <p>Providing reliable IT consultancy, infrastructure solutions, and asset verification services since 2013. We help businesses optimize their IT operations.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="#services">IT Consultancy & Support</a></li>
+                        <li><a href="#services">Server Installation</a></li>
+                        <li><a href="#services">Desktop/Laptop Services</a></li>
+                        <li><a href="#services">IT Infrastructure Setup</a></li>
+                        <li><a href="#services">Asset Verification</a></li>
+                        <li><a href="#services">IT Security Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Chennai, Tamilnadu, India</li>
+                        <li><i class="fas fa-phone"></i> +91 824 867 6101</li>
+                        <li><i class="fas fa-envelope"></i> info@asmtechservices.com</li>
+                        <li><i class="fas fa-clock"></i> 24/7 Support Available</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ASM Tech Services. All Rights Reserved. | Professional IT Solutions Provider</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Active link highlighting
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
