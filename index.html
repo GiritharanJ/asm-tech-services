@@ -10,6 +10,8 @@
             --primary: #4da6ff;
             --primary-dark: #3399ff;
             --primary-light: #e6f2ff;
+            --dark-blue: #1a2980;
+            --dark-blue-light: #2a3a9a;
             --dark: #222;
             --light: #f8f9fa;
             --white: #ffffff;
@@ -31,10 +33,11 @@
         }
         /* Top Contact Bar */
         .top-bar {
-            background: var(--primary-dark);
+            background: var(--dark-blue);
             color: white;
             padding: 12px 0;
             font-size: 15px;
+            border-bottom: 2px solid var(--primary);
         }
         .top-bar .container {
             display: flex;
@@ -53,7 +56,7 @@
             gap: 10px;
         }
         .contact-info i {
-            color: var(--white);
+            color: var(--primary);
         }
         .social-links {
             display: flex;
@@ -66,22 +69,26 @@
         }
         .social-links a:hover {
             transform: translateY(-3px);
+            color: var(--primary);
         }
-        /* Header */
+        /* Main Header */
         header {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--dark-blue-light) 100%);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 0;
+        }
+        .header-main {
+            padding: 15px 0;
         }
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
         }
-        .logo {
+        .logo-container {
             display: flex;
             align-items: center;
             gap: 20px;
@@ -90,33 +97,41 @@
             width: 80px;
             height: 80px;
             object-fit: contain;
-            border-radius: 50%;
             background: transparent;
-            padding: 5px;
         }
         .logo-text {
             display: flex;
             flex-direction: column;
         }
-        .logo-text h1 {
-            font-size: 32px;
+        .company-name {
+            font-size: 34px;
             font-weight: bold;
             color: var(--white);
             margin: 0;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
         }
-        .logo-text p {
-            font-size: 15px;
+        .company-name .asm {
             color: var(--white);
-            margin: 0;
-            font-style: italic;
-            opacity: 0.9;
+            font-weight: 800;
         }
+        .company-name .tech {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .tagline {
+            font-size: 16px;
+            color: var(--primary-light);
+            margin: 5px 0 0 0;
+            font-style: italic;
+            letter-spacing: 0.5px;
+        }
+        /* Navigation */
         nav ul {
             display: flex;
             list-style: none;
             align-items: center;
-            gap: 35px;
+            gap: 30px;
             margin: 0;
             padding: 0;
         }
@@ -128,86 +143,78 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 15px;
-            border-radius: 5px;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 16px;
+            letter-spacing: 0.5px;
         }
         nav ul li a:hover, nav ul li a.active {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
             transform: translateY(-2px);
         }
+        nav ul li a i {
+            font-size: 18px;
+        }
         .quote-btn {
-            background: var(--white);
-            color: var(--primary-dark);
+            background: var(--primary);
+            color: var(--white);
             padding: 12px 30px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid transparent;
         }
         .quote-btn:hover {
-            background: var(--primary-light);
+            background: transparent;
+            border-color: var(--primary);
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-        }
-        /* Dark Blue Box */
-        .dark-blue-box {
-            background: #1a2980;
-            background: linear-gradient(to right, #1a2980, #26d0ce);
-            color: white;
-            padding: 15px 0;
-            margin-top: 5px;
-        }
-        .dark-blue-box .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .company-name {
-            font-size: 22px;
-            font-weight: bold;
-        }
-        .box-content {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-        .box-content a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.3s;
-        }
-        .box-content a:hover {
-            opacity: 0.8;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
         }
         /* Hero */
         .hero {
             padding: 100px 0 80px;
             background: linear-gradient(135deg, #f5f9ff 0%, #e6f2ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(77, 166, 255, 0.05)"/></svg>');
+            background-size: cover;
         }
         .hero-content {
             display: flex;
             align-items: center;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
         .hero-text {
             flex: 1;
             min-width: 300px;
+            padding-right: 40px;
         }
         .hero-text h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--dark);
+            font-size: 3.2rem;
+            margin-bottom: 25px;
+            color: var(--dark-blue);
             line-height: 1.2;
+            font-weight: 700;
         }
         .hero-text p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: #555;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             line-height: 1.8;
         }
         .hero-buttons {
@@ -218,20 +225,26 @@
         .hero-buttons .btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 14px 35px;
+            gap: 12px;
+            padding: 16px 38px;
             background: var(--primary);
             color: white;
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 16px;
+            font-size: 17px;
             transition: all 0.3s;
+            border: 2px solid transparent;
         }
         .hero-buttons .btn:hover {
-            background: var(--primary-dark);
+            background: transparent;
+            border-color: var(--primary);
+            color: var(--primary);
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        .hero-buttons .btn i {
+            font-size: 20px;
         }
         .hero-image {
             flex: 1;
@@ -241,7 +254,8 @@
         .hero-image img {
             max-width: 100%;
             border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border: 8px solid white;
         }
         /* Services */
         .services {
@@ -250,65 +264,102 @@
         }
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
         .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--dark);
+            font-size: 2.8rem;
+            color: var(--dark-blue);
             margin-bottom: 15px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
         }
         .section-title p {
             color: #666;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             max-width: 700px;
             margin: 0 auto;
+            line-height: 1.7;
         }
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
             margin-bottom: 50px;
         }
         .service-card {
             background: white;
-            padding: 35px 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             text-align: center;
-            transition: all 0.3s;
-            border: 1px solid rgba(77, 166, 255, 0.1);
+            transition: all 0.4s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--dark-blue));
         }
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
             border-color: var(--primary);
         }
         .service-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--primary-light);
+            width: 85px;
+            height: 85px;
+            background: linear-gradient(135deg, var(--primary-light), white);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 25px;
-            color: var(--primary-dark);
-            font-size: 32px;
+            color: var(--dark-blue);
+            font-size: 36px;
+            box-shadow: 0 8px 20px rgba(77, 166, 255, 0.2);
+            transition: transform 0.3s;
+        }
+        .service-card:hover .service-icon {
+            transform: rotate(360deg);
+            background: linear-gradient(135deg, var(--primary), var(--dark-blue));
+            color: white;
         }
         .service-card h3 {
-            color: var(--dark);
-            margin-bottom: 15px;
-            font-size: 1.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+            font-weight: 600;
         }
         .service-card p {
             color: #666;
-            line-height: 1.7;
+            line-height: 1.8;
+            font-size: 1.05rem;
         }
         /* Footer */
         footer {
-            background: var(--dark);
+            background: var(--dark-blue);
             color: white;
-            padding: 60px 0 20px;
+            padding: 70px 0 25px;
+            background: linear-gradient(135deg, var(--dark-blue) 0%, #0d1a5c 100%);
         }
         .footer-content {
             display: grid;
@@ -317,97 +368,138 @@
             margin-bottom: 40px;
         }
         .footer-about h3 {
-            margin-bottom: 20px;
-            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-size: 1.9rem;
             color: var(--white);
+            font-weight: 700;
+        }
+        .footer-about h3 span {
+            color: var(--primary);
         }
         .footer-about p {
-            color: #bbb;
+            color: #d1d9ff;
             line-height: 1.8;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
         }
         .footer-contact h4 {
-            margin-bottom: 20px;
-            font-size: 1.3rem;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
             color: var(--white);
+            font-weight: 600;
         }
         .footer-contact ul {
             list-style: none;
         }
         .footer-contact ul li {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             display: flex;
             align-items: flex-start;
-            gap: 12px;
+            gap: 15px;
+            font-size: 1.05rem;
         }
         .footer-contact ul li i {
             color: var(--primary);
-            margin-top: 3px;
+            margin-top: 4px;
+            font-size: 20px;
+            min-width: 25px;
         }
         .footer-bottom {
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #bbb;
-            font-size: 14px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            color: #a0a8e6;
+            font-size: 15px;
         }
         /* Responsive */
-        @media (max-width: 992px) {
-            .hero-text h1 {
-                font-size: 2.5rem;
+        @media (max-width: 1100px) {
+            .hero-text {
+                padding-right: 20px;
             }
-            .dark-blue-box .container {
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+        }
+        @media (max-width: 992px) {
+            .hero-content {
                 flex-direction: column;
+                gap: 50px;
+            }
+            .hero-text {
+                padding-right: 0;
                 text-align: center;
-                gap: 15px;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .company-name {
+                font-size: 28px;
             }
         }
         @media (max-width: 768px) {
             .top-bar .container {
                 flex-direction: column;
-                gap: 10px;
+                gap: 12px;
                 text-align: center;
+            }
+            .contact-info {
+                justify-content: center;
             }
             .header-content {
                 flex-direction: column;
-                gap: 20px;
+                gap: 25px;
+            }
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
             }
             nav ul {
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 15px;
             }
+            nav ul li a {
+                padding: 8px 15px;
+                font-size: 15px;
+            }
             .hero-text h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
-            .hero-buttons {
-                flex-direction: column;
-                align-items: flex-start;
+            .hero-text p {
+                font-size: 1.1rem;
             }
-            .footer-content {
-                grid-template-columns: 1fr;
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            .service-card {
+                padding: 30px 25px;
             }
         }
         @media (max-width: 480px) {
-            .logo {
+            .contact-info {
                 flex-direction: column;
-                text-align: center;
                 gap: 10px;
             }
             .logo-img {
                 width: 70px;
                 height: 70px;
             }
-            nav ul {
-                gap: 10px;
+            .company-name {
+                font-size: 24px;
             }
-            nav ul li a {
-                padding: 6px 10px;
+            .tagline {
                 font-size: 14px;
             }
             .quote-btn {
                 padding: 10px 20px;
                 font-size: 14px;
+            }
+            .hero-buttons .btn {
+                padding: 14px 25px;
+                font-size: 15px;
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
@@ -429,47 +521,34 @@
         </div>
     </div>
 
-    <!-- Header -->
+    <!-- Main Dark Blue Header -->
     <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <!-- ADD YOUR LOGO HERE -->
-                    <img src="ASMlogo.jpeg" alt="ASM Tech Services Logo" class="logo-img"> 
-                    <div class="logo-text">
-                        <h1><span>ASM</span> Tech Services</h1>
-                        <p>Quality IT Solutions & Consultancy</p>
+        <div class="header-main">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo-container">
+                        <!-- ADD YOUR LOGO HERE -->
+                       <img src="ASMlogo.jpeg" alt="ASM Tech Services Logo" class="logo-img"> 
+                        <div class="logo-text">
+                            <h1 class="company-name">
+                                <span class="asm">ASM</span><span class="tech">TECH</span> Services
+                            </h1>
+                            <p class="tagline">Quality IT Solutions & Consultancy</p>
+                        </div>
                     </div>
+                    <nav>
+                        <ul>
+                            <li><a href="#" class="active"><i class="fas fa-home"></i> Home</a></li>
+                            <li><a href="#"><i class="fas fa-info-circle"></i> About Us</a></li>
+                            <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
+                            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                            <li><a href="requirements.html" class="quote-btn"><i class="fas fa-file-alt"></i> Get Free Quote</a></li>
+                        </ul>
+                    </nav>
                 </div>
-                <nav>
-                    <ul>
-                        <li><a href="#" class="active"><i class="fas fa-home"></i> Home</a></li>
-                        <li><a href="#"><i class="fas fa-info-circle"></i> About Us</a></li>
-                        <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
-                        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
-                        <li><a href="requirements.html" class="quote-btn"><i class="fas fa-file-alt"></i> Get Free Quote</a></li>
-                    </ul>
-                </nav>
             </div>
         </div>
     </header>
-
-    <!-- Dark Blue Box -->
-    <div class="dark-blue-box">
-        <div class="container">
-            <div class="company-name">ASM Tech Services</div>
-            <div class="box-content">
-                <span>Quality IT Solutions & Consultancy</span>
-                <a href="#"><i class="fas fa-home"></i> Home</a>
-                <a href="#"><i class="fas fa-info-circle"></i> About Us</a>
-                <a href="#services"><i class="fas fa-cogs"></i> Services</a>
-                <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
-                <a href="requirements.html" style="background: white; color: #1a2980; padding: 5px 15px; border-radius: 4px;">
-                    <i class="fas fa-file-alt"></i> Get Free Quote
-                </a>
-            </div>
-        </div>
-    </div>
 
     <!-- Hero -->
     <section class="hero">
@@ -548,7 +627,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <h3>ASM Tech Services</h3>
+                    <h3><span>ASM</span> Tech Services</h3>
                     <p>Providing reliable IT consultancy, infrastructure solutions, and asset verification services since 2013. We help businesses optimize their IT operations and achieve digital transformation goals.</p>
                 </div>
                 <div class="footer-contact">
@@ -566,9 +645,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- Requirements Page HTML (Save as requirements.html) -->
-    <!-- This is included in the same file but should be saved separately -->
 
     <script>
         // Smooth scrolling
