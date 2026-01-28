@@ -1,433 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASMTECH Services - Quality IT Solutions</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #f5f7fa;
-            color: #333;
-        }
-        
-        /* Top Contact Bar */
-        .top-bar {
-            background: linear-gradient(135deg, #0d1b3e 0%, #1a3a8f 100%);
-            color: white;
-            padding: 10px 0;
-            font-size: 0.9rem;
-        }
-        
-        .top-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-        
-        .location {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .contact-info {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .contact-info div {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .support-badge {
-            background-color: #28a745;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        /* Main Header */
-        .main-header {
-            background-color: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-        }
-        
-        /* Logo Design */
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #1a3a8f 0%, #0d1b3e 100%);
-            border-radius: 12px;
-            color: white;
-            font-weight: 800;
-            font-size: 1.8rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .logo:after {
-            content: "";
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 50%;
-            top: -10px;
-            right: -10px;
-        }
-        
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .logo-main {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #1a3a8f 0%, #0d1b3e 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            line-height: 1;
-        }
-        
-        .logo-tagline {
-            font-size: 0.8rem;
-            color: #666;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-        
-        /* Navigation */
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-        
-        .nav-menu a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 600;
-            font-size: 1rem;
-            padding: 8px 0;
-            position: relative;
-            transition: color 0.3s;
-        }
-        
-        .nav-menu a:hover {
-            color: #1a3a8f;
-        }
-        
-        .nav-menu a:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #1a3a8f 0%, #0d1b3e 100%);
-            bottom: 0;
-            left: 0;
-            transition: width 0.3s;
-        }
-        
-        .nav-menu a:hover:after {
-            width: 100%;
-        }
-        
-        .quote-button {
-            background: linear-gradient(135deg, #1a3a8f 0%, #0d1b3e 100%);
-            color: white;
-            border: none;
-            padding: 12px 28px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(26, 58, 143, 0.2);
-        }
-        
-        .quote-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 16px rgba(26, 58, 143, 0.3);
-        }
-        
-        /* Mobile menu button */
-        .mobile-menu-btn {
-            display: none;
-            font-size: 1.5rem;
-            background: none;
-            border: none;
-            color: #1a3a8f;
-            cursor: pointer;
-        }
-        
-        /* Hero Section */
-        .hero {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 60px 20px;
-            background: linear-gradient(135deg, rgba(26, 58, 143, 0.05) 0%, rgba(13, 27, 62, 0.05) 100%);
-            border-radius: 20px;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #1a3a8f 0%, #0d1b3e 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            color: #555;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            line-height: 1.6;
-        }
-        
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #0d1b3e 0%, #1a3a8f 100%);
-            color: white;
-            padding: 40px 20px;
-            margin-top: 60px;
-            text-align: center;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .top-container {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-            
-            .contact-info {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .nav-menu {
-                gap: 20px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .nav-menu {
-                position: fixed;
-                top: 140px;
-                left: 0;
-                width: 100%;
-                background-color: white;
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s;
-                z-index: 999;
-            }
-            
-            .nav-menu.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .logo-main {
-                font-size: 1.5rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .header-container {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-            }
-            
-            .quote-button {
-                margin-top: 10px;
-            }
-            
-            .hero {
-                padding: 40px 20px;
-            }
-            
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Top Contact Bar -->
-    <div class="top-bar">
-        <div class="top-container">
-            <div class="location">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>Chennai, Tamilnadu, India</span>
-            </div>
-            <div class="contact-info">
-                <div class="phone">
-                    <i class="fas fa-phone-alt"></i>
-                    <span>+91 824 867 6101</span>
-                </div>
-                <div class="support-badge">
-                    <i class="fas fa-headset"></i>
-                    <span>24/7 Support Available</span>
-                </div>
-            </div>
-        </div>
-    </div>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASMTECH Services | Quality IT Solutions</title>
 
-    <!-- Main Header with Logo -->
-    <header class="main-header">
-        <div class="header-container">
-            <!-- Logo Section -->
-            <div class="logo-container">
-                <div class="logo">A</div>
-                <div class="logo-text">
-                    <div class="logo-main">ASMTECH</div>
-                    <div class="logo-tagline">Quality IT Solutions & Services</div>
-                </div>
-            </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-            <!-- Mobile Menu Button -->
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
+<style>
+:root{
+  --dark:#0d1b3e;
+  --dark2:#1a3a8f;
+  --primary:#4da6ff;
+  --light:#f5f7fa;
+  --white:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Tahoma;}
+body{background:#fff;color:#333}
 
-            <!-- Navigation Menu -->
-            <nav>
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="#" class="active">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
+/* TOP BAR */
+.top-bar{
+  background:linear-gradient(135deg,var(--dark),var(--dark2));
+  color:#fff;
+  padding:8px 0;
+  font-size:13px;
+}
+.top-bar .wrap{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 15px;
+  flex-wrap:wrap;
+}
+.top-bar span{margin-right:15px}
+.social a{color:#fff;margin-left:10px;font-size:18px}
 
-            <!-- CTA Button -->
-            <button class="quote-button">Get Free Quote</button>
-        </div>
-    </header>
+/* HEADER */
+header{
+  background:var(--dark2);
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+.header-wrap{
+  max-width:1200px;
+  margin:auto;
+  padding:12px 15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.logo img{width:60px;height:60px}
+.logo h1{
+  font-size:26px;
+  color:#fff;
+  line-height:1.2;
+}
+.logo p{
+  font-size:13px;
+  color:#cfe2ff;
+}
 
-    <!-- Hero Section -->
-    <main>
-        <section class="hero">
-            <h1>Professional IT Solutions for Your Business</h1>
-            <p>ASMTECH Services provides comprehensive IT solutions and services to help your business thrive in the digital age. From network security to cloud solutions, we have the expertise to support your technology needs.</p>
-            <button class="quote-button">Explore Our Services</button>
-        </section>
-    </main>
+/* NAV */
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:18px;
+  align-items:center;
+}
+nav a{
+  color:#fff;
+  text-decoration:none;
+  padding:8px 14px;
+  border-radius:4px;
+  font-size:14px;
+}
+nav a:hover, nav a.active{
+  background:rgba(255,255,255,0.15);
+}
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <h2>ASMTECH Services</h2>
-            <p>Chennai, Tamilnadu, India | +91 824 867 6101</p>
-            <p>© 2023 ASMTECH Services. All rights reserved.</p>
-        </div>
-    </footer>
+/* BUTTON */
+.quote-btn{
+  background:var(--primary);
+  color:#fff;
+  padding:8px 18px;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:600;
+}
 
-    <script>
-        // Mobile menu functionality
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navMenu = document.getElementById('navMenu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            
-            // Change icon
-            const icon = mobileMenuBtn.querySelector('i');
-            if (navMenu.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-        
-        // Close menu when clicking a link
-        const navLinks = document.querySelectorAll('.nav-menu a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                const icon = mobileMenuBtn.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            });
-        });
-        
-        // Add active class to clicked nav item
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                navLinks.forEach(item => item.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-    </script>
-</body>
-</html>
+/* HERO */
+.hero{
+  background:linear-gradient(135deg,#f5f9ff,#e6f2ff);
+  padding:80px 15px;
+}
+.hero-wrap{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  gap:40px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.hero-text{flex:1}
+.hero-text h2{
+  font-size:36px;
+  color:var(--dark2);
+  margin-bottom:15px;
+}
+.hero-text p{
+  font-size:17px;
+  line-height:1.6;
+  margin-bottom:25px;
+}
+.hero img{
+  max-width:100%;
+  border-radius:12px;
+  box-shadow:0
