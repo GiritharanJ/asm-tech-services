@@ -36,33 +36,70 @@
         /* In .top-bar section */
 .top-bar {
     background: var(--dark-blue);
-    color: var(--white); /* Changed to white */
-    padding: 8px 0;
+    color: white;
+    padding: 10px 0;
     font-size: 13px;
-    border-bottom: 1px solid var(--white); /* Changed to white */
+    border-bottom: 1px solid var(--primary);
+}
+
+.top-bar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact-info {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Space between contact items */
 }
 
 .contact-info span {
     display: flex;
     align-items: center;
-    gap: 6px;
-    color: var(--white); /* Added white color */
+    gap: 8px;
+    white-space: nowrap;
+}
+
+/* Red emoji styling */
+.contact-info span::before {
+    font-size: 14px;
+    color: #ff4d4d; /* Red color for emoji */
+    margin-right: 5px;
+}
+
+.contact-info .location::before {
+    content: '📍';
+}
+
+.contact-info .phone::before {
+    content: '📞';
+}
+
+.contact-info .support::before {
+    content: '⏰';
 }
 
 .contact-info i {
-    color: var(--white); /* Changed to white */
-    font-size: 14px;
+    display: none; /* Hide FontAwesome icons */
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: 20px;
 }
 
 .social-links a {
-    color: var(--white); /* White */
+    color: white;
     font-size: 18px;
-    transition: transform 0.3s;
+    transition: transform 0.3s, color 0.3s;
 }
 
 .social-links a:hover {
     transform: translateY(-2px);
-    color: var(--primary); /* Red on hover */
+    color: #ff4d4d; /* Red color on hover */
 }
         /* Main Header - Reduced */
         header {
@@ -427,15 +464,24 @@ nav ul li a:hover, nav ul li a.active {
                 font-size: 22px;
             }
         }
-        @media (max-width: 768px) {
-            .top-bar .container {
-                flex-direction: column;
-                gap: 8px;
-                text-align: center;
-            }
-            .contact-info {
-                justify-content: center;
-            }
+       @media (max-width: 768px) {
+    .top-bar .container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .contact-info {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .social-links {
+        margin-left: 0;
+    }
+
             .header-content {
                 flex-direction: column;
                 gap: 20px;
@@ -478,14 +524,18 @@ nav ul li a:hover, nav ul li a.active {
             }
         }
         @media (max-width: 480px) {
-            .contact-info {
-                flex-direction: column;
-                gap: 6px;
-                font-size: 12px;
-            }
-            .contact-info i {
-                font-size: 12px;
-            }
+    .contact-info {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .contact-info span {
+        font-size: 12px;
+    }
+    
+    .contact-info span::before {
+        font-size: 12px;
+    }
             .logo-img {
                 width: 50px;
                 height: 50px;
@@ -516,19 +566,19 @@ nav ul li a:hover, nav ul li a.active {
 <body>
     <!-- Top Contact Bar -->
     <div class="top-bar">
-        <div class="container">
-            <div class="contact-info">
-                <span><i class="fas fa-map-marker-alt"></i> Chennai, Tamilnadu, India</span>
-                <span><i class="fas fa-phone"></i> +91 824 867 6101</span>
-                <span><i class="fas fa-clock"></i> 24/7 Support Available</span>
-            </div>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/company/asmtechservices/" target="_blank" title="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-            </div>
+    <div class="container">
+        <div class="contact-info">
+            <span>📍 Chennai, Tamilnadu, India</span>
+            <span>📞 +91 824 867 6101</span>
+            <span>⏰ 24/7 Support Available</span>
+        </div>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/company/asmtechservices/" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
         </div>
     </div>
+</div>
 
     <!-- Main Dark Blue Header -->
     <header>
