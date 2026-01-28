@@ -26,7 +26,7 @@
             border-radius: 15px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             width: 100%;
-            max-width: 500px;
+            max-width: 550px;
             overflow: hidden;
         }
         
@@ -53,7 +53,7 @@
         }
         
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         
         label {
@@ -61,6 +61,7 @@
             margin-bottom: 8px;
             font-weight: 500;
             color: #333;
+            font-size: 14px;
         }
         
         .required::after {
@@ -88,11 +89,20 @@
             resize: vertical;
         }
         
+        .input-group {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .input-group .form-group {
+            flex: 1;
+        }
+        
         .captcha-container {
             display: flex;
             align-items: center;
             gap: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
         
         .captcha-code {
@@ -103,7 +113,7 @@
             font-size: 24px;
             font-weight: bold;
             letter-spacing: 3px;
-            color: #4f46e5;
+            color: #ef4444;
             border: 1px dashed #d1d5db;
             flex-shrink: 0;
         }
@@ -130,6 +140,7 @@
             cursor: pointer;
             width: 100%;
             transition: all 0.3s ease;
+            margin-top: 10px;
         }
         
         .submit-btn:hover {
@@ -162,6 +173,11 @@
         }
         
         @media (max-width: 600px) {
+            .input-group {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
             .captcha-container {
                 flex-direction: column;
                 align-items: stretch;
@@ -183,6 +199,18 @@
         
         <div class="form-container">
             <form id="requirementsForm">
+                <div class="input-group">
+                    <div class="form-group">
+                        <label for="name" class="required">Enter your name</label>
+                        <input type="text" id="name" name="name" placeholder="Your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="required">Enter your email</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    </div>
+                </div>
+                
                 <div class="form-group">
                     <label for="mobile" class="required">Enter your mobile number</label>
                     <input type="tel" id="mobile" name="mobile" placeholder="e.g., +1 (555) 123-4567" required>
@@ -197,7 +225,7 @@
                     <label for="captcha" class="required">Enter the code shown above</label>
                     <div class="captcha-container">
                         <div class="captcha-code" id="captchaDisplay">D X K t 8</div>
-                        <input type="text" id="captcha" name="captcha" class="captcha-input" placeholder="Enter the characters shown in the image above (case insensitive)" required>
+                        <input type="text" id="captcha" name="captcha" class="captcha-input" placeholder="Enter the characters shown in red (case insensitive)" required>
                     </div>
                     <div class="note">Note: The code is case insensitive</div>
                 </div>
@@ -209,7 +237,7 @@
             
             <div id="successMessage" class="success-message">
                 <strong>Request sent successfully!</strong><br>
-                Your requirements have been sent to the administrator.
+                Your requirements have been sent to ASM Tech Services. They will contact you within 24 hours.
             </div>
         </div>
     </div>
@@ -223,7 +251,7 @@
             const captchaDisplay = document.getElementById('captchaDisplay');
             
             // Store the original captcha for validation
-            const originalCaptcha = "D X K t 8".toLowerCase().replace(/\s/g, '');
+            let originalCaptcha = "D X K t 8".toLowerCase().replace(/\s/g, '');
             
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -231,6 +259,26 @@
                 // Hide any previous messages
                 successMessage.style.display = 'none';
                 errorMessage.style.display = 'none';
+                
+                // Validate all required fields
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const mobile = document.getElementById('mobile').value.trim();
+                const requirements = document.getElementById('requirements').value.trim();
+                
+                if (!name || !email || !mobile || !requirements) {
+                    errorMessage.textContent = "Please fill in all required fields.";
+                    errorMessage.style.display = 'block';
+                    return;
+                }
+                
+                // Validate email format
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    errorMessage.textContent = "Please enter a valid email address.";
+                    errorMessage.style.display = 'block';
+                    return;
+                }
                 
                 // Validate captcha (case insensitive)
                 const userCaptcha = captchaInput.value.toLowerCase().replace(/\s/g, '');
@@ -243,11 +291,13 @@
                 }
                 
                 // Get form data
-                const mobile = document.getElementById('mobile').value;
-                const requirements = document.getElementById('requirements').value;
-                
-                // Here you would typically send the data to a server
-                // For demonstration, we'll simulate sending an email
+                const formData = {
+                    name: name,
+                    email: email,
+                    mobile: mobile,
+                    requirements: requirements,
+                    captcha: userCaptcha
+                };
                 
                 // Display success message
                 successMessage.style.display = 'block';
@@ -261,22 +311,20 @@
                 // 2. An email service or SMTP configuration
                 
                 console.log('Form data to be sent via email:');
-                console.log('Mobile:', mobile);
-                console.log('Requirements:', requirements);
+                console.log('Name:', formData.name);
+                console.log('Email:', formData.email);
+                console.log('Mobile:', formData.mobile);
+                console.log('Requirements:', formData.requirements);
                 console.log('--- This would be sent to your email ---');
                 
                 // Example backend call (uncomment and modify with your endpoint):
-                /*
+              
                 fetch('your-backend-endpoint.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({
-                        mobile: mobile,
-                        requirements: requirements,
-                        captcha: userCaptcha
-                    })
+                    body: JSON.stringify(formData)
                 })
                 .then(response => response.json())
                 .then(data => {
@@ -293,7 +341,7 @@
                     errorMessage.textContent = 'Network error. Please try again.';
                     errorMessage.style.display = 'block';
                 });
-                */
+              
             });
             
             // Function to generate a new captcha
@@ -315,6 +363,9 @@
                 originalCaptcha = newCaptcha.toLowerCase();
                 captchaInput.value = '';
             }
+            
+            // Optional: Generate new captcha on page load
+            // generateNewCaptcha();
         });
     </script>
 </body>
