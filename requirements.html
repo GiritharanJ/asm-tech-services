@@ -46,18 +46,37 @@
         
         .logo-container {
             margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .logo-img {
+            height: 80px;
+            width: 80px;
+            object-fit: contain;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .logo-text {
+            flex: 1;
         }
         
         .logo {
-            font-size: 36px;
+            font-size: 32px;
             font-weight: 800;
             letter-spacing: 1px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px 25px;
-            border-radius: 12px;
-            display: inline-block;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            line-height: 1.2;
+        }
+        
+        .tagline {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 5px;
+            font-weight: 500;
         }
         
         .company-info {
@@ -68,6 +87,8 @@
             font-size: 24px;
             margin-bottom: 25px;
             font-weight: 600;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 10px;
         }
         
         .contact-item {
@@ -82,17 +103,19 @@
             font-size: 20px;
             min-width: 24px;
             text-align: center;
+            color: rgba(255, 255, 255, 0.9);
         }
         
         .contact-text h4 {
             font-size: 16px;
             margin-bottom: 5px;
             font-weight: 600;
+            color: rgba(255, 255, 255, 0.95);
         }
         
         .contact-text p {
             font-size: 15px;
-            opacity: 0.9;
+            opacity: 0.85;
             line-height: 1.5;
         }
         
@@ -104,18 +127,20 @@
             align-items: center;
             margin-top: 20px;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
         }
         
         .support-icon {
             font-size: 20px;
             margin-right: 10px;
+            color: #4ade80;
         }
         
         .bg-pattern {
             position: absolute;
             bottom: -50px;
             right: -50px;
-            opacity: 0.1;
+            opacity: 0.08;
             font-size: 200px;
             transform: rotate(15deg);
         }
@@ -237,6 +262,9 @@
             width: 100%;
             transition: all 0.3s ease;
             margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .submit-btn:hover {
@@ -246,6 +274,11 @@
         
         .submit-btn:active {
             transform: translateY(0);
+        }
+        
+        .btn-icon {
+            margin-right: 10px;
+            font-size: 18px;
         }
         
         .success-message {
@@ -288,6 +321,17 @@
                 flex-direction: column;
                 gap: 20px;
             }
+            
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .logo-img {
+                height: 70px;
+                width: 70px;
+            }
         }
         
         @media (max-width: 600px) {
@@ -304,6 +348,10 @@
             .left-side, .right-side {
                 padding: 30px 20px;
             }
+            
+            .logo {
+                font-size: 28px;
+            }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -312,10 +360,12 @@
     <div class="main-container">
         <!-- Left Side - Company Info -->
         <div class="left-side">
-             <div class="logo-container">
-                        <!-- ADD YOUR LOGO HERE -->
-                       <img src="ASMlogo.jpeg" alt="ASM Tech Services Logo" class="logo-img"> 
-                        <div class="logo">ASM TECH SERVICES</div>
+            <div class="logo-container">
+                <img src="ASMlogo.jpeg" alt="ASM Tech Services Logo" class="logo-img">
+                <div class="logo-text">
+                    <div class="logo">ASM TECH SERVICES</div>
+                    <div class="tagline">Innovative IT Solutions</div>
+                </div>
             </div>
             
             <div class="company-info">
@@ -409,7 +459,7 @@
                     <div id="errorMessage" class="error-message"></div>
                     
                     <button type="submit" class="submit-btn">
-                        <i class="fas fa-paper-plane" style="margin-right: 10px;"></i>
+                        <i class="fas fa-paper-plane btn-icon"></i>
                         Send Request
                     </button>
                 </form>
@@ -417,7 +467,7 @@
                 <div id="successMessage" class="success-message">
                     <i class="fas fa-check-circle" style="font-size: 24px; margin-bottom: 10px;"></i><br>
                     <strong>Request sent successfully!</strong><br>
-                    Your requirements have been sent to ASM Tech Services. They will contact you within 24 hours.
+                    Your requirements have been sent to our team. We'll contact you soon.
                 </div>
             </div>
         </div>
