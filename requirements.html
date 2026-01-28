@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Requirements Form</title>
+    <title>ASM Tech Services - IT Requirements Form</title>
     <style>
         * {
             margin: 0;
@@ -21,35 +21,131 @@
             padding: 20px;
         }
         
-        .container {
+        .main-container {
             background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
             width: 100%;
-            max-width: 550px;
+            max-width: 1100px;
+            overflow: hidden;
+            display: flex;
+            min-height: 700px;
+        }
+        
+        /* Left Side - Company Info */
+        .left-side {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            flex: 1;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
             overflow: hidden;
         }
         
-        .header {
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-            color: white;
-            padding: 30px 20px;
+        .logo-container {
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 25px;
+            border-radius: 12px;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .company-info {
+            margin-top: auto;
+        }
+        
+        .company-info h3 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding-left: 10px;
+        }
+        
+        .contact-icon {
+            margin-right: 15px;
+            font-size: 20px;
+            min-width: 24px;
             text-align: center;
         }
         
-        .header h1 {
-            font-size: 24px;
-            font-weight: 600;
+        .contact-text h4 {
+            font-size: 16px;
             margin-bottom: 5px;
+            font-weight: 600;
         }
         
-        .header p {
-            font-size: 14px;
+        .contact-text p {
+            font-size: 15px;
             opacity: 0.9;
+            line-height: 1.5;
+        }
+        
+        .support-badge {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px 20px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            margin-top: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .support-icon {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        
+        .bg-pattern {
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            opacity: 0.1;
+            font-size: 200px;
+            transform: rotate(15deg);
+        }
+        
+        /* Right Side - Form */
+        .right-side {
+            flex: 1.2;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-header {
+            margin-bottom: 30px;
+        }
+        
+        .form-header h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .form-header p {
+            color: #666;
+            font-size: 15px;
         }
         
         .form-container {
-            padding: 30px;
+            flex-grow: 1;
         }
         
         .form-group {
@@ -71,9 +167,9 @@
         
         input, textarea {
             width: 100%;
-            padding: 12px 15px;
+            padding: 14px 18px;
             border: 2px solid #e5e7eb;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 16px;
             transition: all 0.3s ease;
         }
@@ -81,17 +177,17 @@
         input:focus, textarea:focus {
             outline: none;
             border-color: #4f46e5;
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
         }
         
         textarea {
-            min-height: 120px;
+            min-height: 130px;
             resize: vertical;
         }
         
         .input-group {
             display: flex;
-            gap: 15px;
+            gap: 20px;
         }
         
         .input-group .form-group {
@@ -107,10 +203,10 @@
         
         .captcha-code {
             background: #f3f4f6;
-            padding: 10px 20px;
-            border-radius: 8px;
+            padding: 12px 25px;
+            border-radius: 10px;
             font-family: monospace;
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
             letter-spacing: 3px;
             color: #ef4444;
@@ -123,7 +219,7 @@
         }
         
         .note {
-            font-size: 12px;
+            font-size: 13px;
             color: #6b7280;
             margin-top: 5px;
             font-style: italic;
@@ -133,10 +229,10 @@
             background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
             color: white;
             border: none;
-            padding: 15px 30px;
-            font-size: 16px;
+            padding: 16px 35px;
+            font-size: 17px;
             font-weight: 600;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             width: 100%;
             transition: all 0.3s ease;
@@ -144,8 +240,8 @@
         }
         
         .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 7px 14px rgba(79, 70, 229, 0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.25);
         }
         
         .submit-btn:active {
@@ -155,8 +251,8 @@
         .success-message {
             background-color: #d1fae5;
             color: #065f46;
-            padding: 15px;
-            border-radius: 8px;
+            padding: 18px;
+            border-radius: 10px;
             margin-top: 20px;
             display: none;
             text-align: center;
@@ -165,19 +261,36 @@
         .error-message {
             background-color: #fee2e2;
             color: #991b1b;
-            padding: 10px;
-            border-radius: 8px;
-            margin-top: 10px;
-            font-size: 14px;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-size: 15px;
             display: none;
+            text-align: center;
         }
         
-        @media (max-width: 600px) {
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .main-container {
+                flex-direction: column;
+                max-width: 600px;
+            }
+            
+            .left-side {
+                padding: 40px 30px;
+            }
+            
+            .right-side {
+                padding: 40px 30px;
+            }
+            
             .input-group {
                 flex-direction: column;
                 gap: 20px;
             }
-            
+        }
+        
+        @media (max-width: 600px) {
             .captcha-container {
                 flex-direction: column;
                 align-items: stretch;
@@ -187,57 +300,123 @@
                 text-align: center;
                 margin-bottom: 10px;
             }
+            
+            .left-side, .right-side {
+                padding: 30px 20px;
+            }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>IT Requirements Form</h1>
-            <p>Fill out the form below and we'll get back to you soon</p>
+    <div class="main-container">
+        <!-- Left Side - Company Info -->
+        <div class="left-side">
+            <div class="logo-container">
+                <div class="logo">ASM TECH SERVICES</div>
+            </div>
+            
+            <div class="company-info">
+                <h3>Contact Info</h3>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Location</h4>
+                        <p>Chennai, Tamilnadu, India</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Phone Number</h4>
+                        <p>+91 824 867 6101</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Email Address</h4>
+                        <p>info@asmtechservices.com</p>
+                    </div>
+                </div>
+                
+                <div class="support-badge">
+                    <div class="support-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="support-text">
+                        <strong>24/7 Support Available</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-pattern">
+                <i class="fas fa-laptop-code"></i>
+            </div>
         </div>
         
-        <div class="form-container">
-            <form id="requirementsForm">
-                <div class="input-group">
-                    <div class="form-group">
-                        <label for="name" class="required">Enter your name</label>
-                        <input type="text" id="name" name="name" placeholder="Your full name" required>
+        <!-- Right Side - Form -->
+        <div class="right-side">
+            <div class="form-header">
+                <h1>IT Requirements Form</h1>
+                <p>Fill out the form below and we'll get back to you soon</p>
+            </div>
+            
+            <div class="form-container">
+                <form id="requirementsForm">
+                    <div class="input-group">
+                        <div class="form-group">
+                            <label for="name" class="required">Enter your name</label>
+                            <input type="text" id="name" name="name" placeholder="Your full name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="required">Enter your email</label>
+                            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                        </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="email" class="required">Enter your email</label>
-                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                        <label for="mobile" class="required">Enter your mobile number</label>
+                        <input type="tel" id="mobile" name="mobile" placeholder="e.g., +1 (555) 123-4567" required>
                     </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="mobile" class="required">Enter your mobile number</label>
-                    <input type="tel" id="mobile" name="mobile" placeholder="e.g., +1 (555) 123-4567" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="requirements" class="required">Describe your IT requirements</label>
-                    <textarea id="requirements" name="requirements" placeholder="Describe your IT requirements, services needed, project details, or any specific needs..." required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="captcha" class="required">Enter the code shown above</label>
-                    <div class="captcha-container">
-                        <div class="captcha-code" id="captchaDisplay">D X K t 8</div>
-                        <input type="text" id="captcha" name="captcha" class="captcha-input" placeholder="Enter the characters shown in red (case insensitive)" required>
+                    
+                    <div class="form-group">
+                        <label for="requirements" class="required">Describe your IT requirements</label>
+                        <textarea id="requirements" name="requirements" placeholder="Describe your IT requirements, services needed, project details, or any specific needs..." required></textarea>
                     </div>
-                    <div class="note">Note: The code is case insensitive</div>
+                    
+                    <div class="form-group">
+                        <label for="captcha" class="required">Enter the code shown above</label>
+                        <div class="captcha-container">
+                            <div class="captcha-code" id="captchaDisplay">j R v s t</div>
+                            <input type="text" id="captcha" name="captcha" class="captcha-input" placeholder="Enter the characters shown in red (case insensitive)" required>
+                        </div>
+                        <div class="note">Note: The code is case insensitive</div>
+                    </div>
+                    
+                    <div id="errorMessage" class="error-message"></div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane" style="margin-right: 10px;"></i>
+                        Send Request
+                    </button>
+                </form>
+                
+                <div id="successMessage" class="success-message">
+                    <i class="fas fa-check-circle" style="font-size: 24px; margin-bottom: 10px;"></i><br>
+                    <strong>Request sent successfully!</strong><br>
+                    Your requirements have been sent to ASM Tech Services. They will contact you within 24 hours.
                 </div>
-                
-                <div id="errorMessage" class="error-message"></div>
-                
-                <button type="submit" class="submit-btn">Send Request</button>
-            </form>
-            
-            <div id="successMessage" class="success-message">
-                <strong>Request sent successfully!</strong><br>
-                Your requirements have been sent to ASM Tech Services. They will contact you within 24 hours.
             </div>
         </div>
     </div>
@@ -251,7 +430,7 @@
             const captchaDisplay = document.getElementById('captchaDisplay');
             
             // Store the original captcha for validation
-            let originalCaptcha = "D X K t 8".toLowerCase().replace(/\s/g, '');
+            let originalCaptcha = "j R v s t".toLowerCase().replace(/\s/g, '');
             
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -315,11 +494,11 @@
                 console.log('Email:', formData.email);
                 console.log('Mobile:', formData.mobile);
                 console.log('Requirements:', formData.requirements);
-                console.log('--- This would be sent to your email ---');
+                console.log('--- This would be sent to info@asmtechservices.com ---');
                 
                 // Example backend call (uncomment and modify with your endpoint):
-              
-                fetch('send_email.php', {
+                /*
+                fetch('your-backend-endpoint.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -341,7 +520,7 @@
                     errorMessage.textContent = 'Network error. Please try again.';
                     errorMessage.style.display = 'block';
                 });
-              
+                */
             });
             
             // Function to generate a new captcha
