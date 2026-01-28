@@ -1,6 +1,344 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASMTECH Services | Quality IT Solutions</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root{
+  --dark:#0d1b3e;
+  --dark2:#1a3a8f;
+  --primary:#4da6ff;
+  --light:#f5f7fa;
+  --white:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Tahoma;}
+body{background:#fff;color:#333}
+
+/* TOP BAR */
+.top-bar{
+  background:linear-gradient(135deg,var(--dark),var(--dark2));
+  color:#fff;
+  padding:8px 0;
+  font-size:13px;
+}
+.top-bar .wrap{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 15px;
+  flex-wrap:wrap;
+}
+.top-bar span{margin-right:15px}
+.social a{color:#fff;margin-left:10px;font-size:18px}
+
+/* HEADER */
+header{
+  background:var(--dark2);
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+.header-wrap{
+  max-width:1200px;
+  margin:auto;
+  padding:12px 15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.logo img{width:60px;height:60px}
+.logo h1{
+  font-size:26px;
+  color:#fff;
+  line-height:1.2;
+}
+.logo p{
+  font-size:13px;
+  color:#cfe2ff;
+}
+
+/* NAV */
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:18px;
+  align-items:center;
+}
+nav a{
+  color:#fff;
+  text-decoration:none;
+  padding:8px 14px;
+  border-radius:4px;
+  font-size:14px;
+}
+nav a:hover, nav a.active{
+  background:rgba(255,255,255,0.15);
+}
+
+/* BUTTON */
+.quote-btn{
+  background:var(--primary);
+  color:#fff;
+  padding:8px 18px;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* HERO */
+.hero{
+  background:linear-gradient(135deg,#f5f9ff,#e6f2ff);
+  padding:80px 15px;
+}
+.hero-wrap{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  gap:40px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.hero-text{flex:1}
+.hero-text h2{
+  font-size:36px;
+  color:var(--dark2);
+  margin-bottom:15px;
+}
+.hero-text p{
+  font-size:17px;
+  line-height:1.6;
+  margin-bottom:25px;
+}
+.hero img{
+  max-width:100%;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+/* SERVICES */
+.services{
+  background:var(--light);
+  padding:70px 15px;
+}
+.services h3{
+  text-align:center;
+  font-size:30px;
+  color:var(--dark2);
+  margin-bottom:40px;
+}
+.grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+}
+.card{
+  background:#fff;
+  padding:25px;
+  border-radius:10px;
+  text-align:center;
+  box-shadow:0 6px 20px rgba(0,0,0,.08);
+}
+.card i{
+  font-size:32px;
+  color:var(--dark2);
+  margin-bottom:15px;
+}
+
+/* FOOTER */
+footer{
+  background:linear-gradient(135deg,var(--dark),#08122b);
+  color:#fff;
+  padding:50px 15px 20px;
+}
+.footer-wrap{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+.footer-bottom{
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,.2);
+  margin-top:30px;
+  padding-top:15px;
+  font-size:13px;
+}
+</style>
+</head>
+
 <body>
-<h1>ASMTECH LIVE TEST</h1>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="wrap">
+    <div>
+      <span><i class="fas fa-map-marker-alt"></i> Chennai, Tamilnadu</span>
+      <span><i class="fas fa-phone"></i> +91 824 867 6101</span>
+      <span><i class="fas fa-clock"></i> 24/7 Support</span>
+    </div>
+    <div class="social">
+      <a href="https://www.linkedin.com/company/asmtechservices/" target="_blank">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-wrap">
+    <div class="logo">
+      <img src="images/ASMlogo.jpeg" alt="ASMTECH Logo">
+      <div>
+        <h1>ASMTECH Services</h1>
+        <p>Quality IT Solutions & Services</p>
+      </div>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="quote-btn" href="requirements.html">Get Free Quote</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-wrap">
+    <div class="hero-text">
+      <h2>Professional IT Solutions for Your Business</h2>
+      <p>
+        ASMTECH Services provides reliable IT infrastructure, server setup,
+        network security, and enterprise support services for growing businesses.
+      </p>
+      <a class="quote-btn" href="#services">Explore Our Services</a>
+    </div>
+    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80">
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our IT Services</h2>
+                <p>Comprehensive IT consultancy, services, solutions, infrastructure support, and asset verification</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>IT Consultancy & Support</h3>
+                    <p>Expert IT consulting, server implementation, laptop & desktop support, network planning, and infrastructure design for optimal business operations.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Server Installation & Maintenance</h3>
+                    <p>Complete server setup, configuration, maintenance, and monitoring services for Windows and Linux environments.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Desktop & Laptop Services</h3>
+                    <p>Hardware repair, software installation, OS configuration, and troubleshooting for all major brands of desktops and laptops.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>IT Infrastructure Setup</h3>
+                    <p>Complete network infrastructure design, cabling, switch/router configuration, wireless setup, and security implementation.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>Asset Verification</h3>
+                    <p>Comprehensive asset tracking, verification, and management for all IT equipment across global locations with detailed reporting.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>IT Security Solutions</h3>
+                    <p>Security audits, firewall configuration, antivirus deployment, data protection, and compliance implementation for business security.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- FOOTER -->
+<footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3><span>ASM</span> Tech Services</h3>
+                    <p>Providing reliable IT consultancy, infrastructure solutions, and asset verification services since 2013. We help businesses optimize their IT operations and achieve digital transformation goals.</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Chennai, Tamilnadu, India</li>
+                        <li><i class="fas fa-phone"></i> +91 824 867 6101</li>
+                        <li><i class="fas fa-envelope"></i> info@asmtechservices.com</li>
+                        <li><i class="fas fa-clock"></i> 24/7 Support Available</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ASM Tech Services. All Rights Reserved. | Professional IT Solutions Provider</p>
+            </div>
+        </div>
+    </footer>
+
+<script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#' || targetId.includes('.html')) return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Active link highlighting
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
