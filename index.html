@@ -294,7 +294,64 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             border: 5px solid white;
         }
-        
+        /* Logo Slider Styles */
+.logo-slider-section {
+    background: #fffae6; /* Light yellow background */
+    padding: 40px 0;
+    overflow: hidden;
+    border-top: 3px solid #ffcc00;
+    border-bottom: 3px solid #ffcc00;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.slide-track {
+    display: flex;
+    animation: scroll 20s linear infinite;
+    width: calc(250px * 26); /* Adjust based on slide count */
+}
+
+.slide {
+    width: 250px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    flex-shrink: 0;
+}
+
+.slide img {
+    max-width: 180px;
+    max-height: 80px;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.slide img:hover {
+    filter: grayscale(0%);
+}
+
+/* Animation */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-250px * 13)); /* Half of total slides */
+    }
+}
         /* Services Section */
         .services {
             padding: 60px 0;
@@ -675,6 +732,97 @@
             </div>
         </div>
     </section>
+
+    <section class="logo-slider-section">
+    <div class="container">
+        <h2 class="section-subtitle">Trusted by Industry Leaders</h2>
+        <div class="slider">
+            <div class="slide-track">
+                <!-- Duplicate slides for continuous effect -->
+                <div class="slide">
+                    <img src="logos/dell.jpeg" alt="DELL">
+                </div>
+                <div class="slide">
+                    <img src="logos/hpe.jpeg" alt="HPE">
+                </div>
+                <div class="slide">
+                    <img src="logos/ibm.jpeg" alt="IBM">
+                </div>
+                <div class="slide">
+                    <img src="logos/cisco.jpeg" alt="Cisco">
+                </div>
+                <div class="slide">
+                    <img src="logos/dlink.jpeg" alt="D-Link">
+                </div>
+                <div class="slide">
+                    <img src="logos/tplink.jpeg" alt="TP-Link">
+                </div>
+                <div class="slide">
+                    <img src="logos/gigabyte.jpeg" alt="Gigabyte">
+                </div>
+                <div class="slide">
+                    <img src="logos/matrix.jpeg" alt="Matrix">
+                </div>
+                <div class="slide">
+                    <img src="logos/essl.jpeg" alt="eSSL">
+                </div>
+                <div class="slide">
+                    <img src="logos/zkteco.jpeg" alt="ZKTeco">
+                </div>
+                <div class="slide">
+                    <img src="logos/nec.jpeg" alt="NEC">
+                </div>
+                <div class="slide">
+                    <img src="logos/tata.jpeg" alt="Tata">
+                </div>
+                <div class="slide">
+                    <img src="logos/panasonic.jpeg" alt="Panasonic">
+                </div>
+
+                <!-- Duplicate the same set for seamless loop -->
+                <div class="slide">
+                    <img src="logos/dell.jpeg" alt="DELL">
+                </div>
+                <div class="slide">
+                    <img src="logos/hpe.jpeg" alt="HPE">
+                </div>
+                <div class="slide">
+                    <img src="logos/ibm.jpeg" alt="IBM">
+                </div>
+                <div class="slide">
+                    <img src="logos/cisco.jpeg" alt="Cisco">
+                </div>
+                <div class="slide">
+                    <img src="logos/dlink.jpeg" alt="D-Link">
+                </div>
+                <div class="slide">
+                    <img src="logos/tplink.jpeg" alt="TP-Link">
+                </div>
+                <div class="slide">
+                    <img src="logos/gigabyte.jpeg" alt="Gigabyte">
+                </div>
+                <div class="slide">
+                    <img src="logos/matrix.jpeg" alt="Matrix">
+                </div>
+                <div class="slide">
+                    <img src="logos/essl.jpeg" alt="eSSL">
+                </div>
+                <div class="slide">
+                    <img src="logos/zkteco.jpeg" alt="ZKTeco">
+                </div>
+                <div class="slide">
+                    <img src="logos/nec.jpeg" alt="NEC">
+                </div>
+                <div class="slide">
+                    <img src="logos/tata.jpeg" alt="Tata">
+                </div>
+                <div class="slide">
+                    <img src="logos/panasonic.jpeg" alt="Panasonic">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- Services -->
     <section class="services" id="services">
