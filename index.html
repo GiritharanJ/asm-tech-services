@@ -7,132 +7,122 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-    --primary: #ff4d4d; /* Changed to red */
-    --primary-dark: #ff3333;
-    --primary-light: #ffe6e6; /* Light red */
-    --dark-blue: #0d1a5c; /* Dark blue kept for header */
-    --dark-blue-light: #1a2980;
-    --dark: #222;
-    --light: #f8f9fa;
-    --white: #ffffff;
-    --sky-blue: #e6f7ff; /* Added sky blue for hero */
-}
+            --primary: #ff4d4d;
+            --primary-dark: #ff3333;
+            --primary-light: #ffe6e6;
+            --dark-blue: #0d1a5c;
+            --dark-blue-light: #1a2980;
+            --dark: #222;
+            --light: #f8f9fa;
+            --white: #ffffff;
+            --sky-blue: #e6f7ff;
+        }
+        
         * {
-            margin: 0; padding: 0; box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+        
         body {
             line-height: 1.5;
             color: #333;
             background-color: var(--white);
             font-size: 14px;
         }
+        
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
         }
-        /* In .top-bar section */
-.top-bar {
-    background: var(--dark-blue);
-    color: white;
-    padding: 10px 0;
-    font-size: 13px;
-    border-bottom: 1px solid var(--primary);
-}
-
-.top-bar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.contact-info {
-    display: flex;
-    align-items: center;
-    gap: 30px; /* Space between contact items */
-}
-
-.contact-info span {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    white-space: nowrap;
-}
-
-/* Red emoji styling */
-.contact-info span::before {
-    font-size: 14px;
-    color: #ff4d4d; /* Red color for emoji */
-    margin-right: 5px;
-}
-
-.contact-info .location::before {
-    content: '📍';
-}
-
-.contact-info .phone::before {
-    content: '📞';
-}
-
-.contact-info .support::before {
-    content: '⏰';
-}
-
-.contact-info i {
-    display: none; /* Hide FontAwesome icons */
-}
-
-.social-links {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-left: 20px;
-}
-
-.social-links a {
-    color: white;
-    font-size: 18px;
-    transition: transform 0.3s, color 0.3s;
-}
-
-.social-links a:hover {
-    transform: translateY(-2px);
-    color: #ff4d4d; /* Red color on hover */
-}
-        /* Main Header - Reduced */
+        
+        /* Top Contact Bar */
+        .top-bar {
+            background: var(--dark-blue);
+            color: white;
+            padding: 10px 0;
+            font-size: 13px;
+            border-bottom: 1px solid var(--primary);
+        }
+        
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        
+        .social-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-left: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 18px;
+            transition: transform 0.3s, color 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-2px);
+            color: var(--primary);
+        }
+        
+        /* Main Header */
         header {
-    background: var(--dark-blue); /* Changed to solid dark blue */
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
-    padding: 0;
-}
+            background: var(--dark-blue);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+            padding: 0;
+        }
+        
         .header-main {
             padding: 12px 0;
         }
+        
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+        
         .logo-container {
             display: flex;
             align-items: center;
             gap: 15px;
         }
+        
         .logo-img {
             width: 60px;
             height: 60px;
             object-fit: contain;
             background: transparent;
         }
+        
         .logo-text {
             display: flex;
             flex-direction: column;
         }
+        
         .company-name {
             font-size: 26px;
             font-weight: bold;
@@ -142,14 +132,17 @@
             letter-spacing: 0.5px;
             line-height: 1.2;
         }
+        
         .company-name .asm {
             color: var(--white);
             font-weight: 700;
         }
+        
         .company-name .tech {
             color: var(--primary);
             font-weight: 600;
         }
+        
         .tagline {
             font-size: 13px;
             color: var(--primary-light);
@@ -157,7 +150,8 @@
             font-style: italic;
             letter-spacing: 0.3px;
         }
-        /* Navigation - Reduced */
+        
+        /* Navigation */
         nav ul {
             display: flex;
             list-style: none;
@@ -166,58 +160,64 @@
             margin: 0;
             padding: 0;
         }
+        
         nav ul li a {
             text-decoration: none;
-            color: var(--white); /* White */
+            color: var(--white);
             font-weight: 500;
             transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 14px;
-    border-radius: 4px;
-    font-size: 14px;
-    letter-spacing: 0.3px;
-}
-
-nav ul li a:hover, nav ul li a.active {
-    background: rgba(255, 255, 255, 0.2); /* Lighter white background */
-    transform: translateY(-1px);
-    color: var(--white); /* Keep white text */
-}
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: 4px;
+            font-size: 14px;
+            letter-spacing: 0.3px;
+        }
+        
+        nav ul li a:hover,
+        nav ul li a.active {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+            color: var(--white);
+        }
+        
         nav ul li a i {
             font-size: 14px;
         }
+        
         .quote-btn {
-    background: var(--white); /* White background */
-    color: var(--dark-blue); /* Dark blue text */
-    padding: 8px 20px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    border: 1px solid transparent;
-    font-size: 13px;
-}
-
-.quote-btn:hover {
-    background: transparent;
-    border-color: var(--white); /* White border */
-    color: var(--white); /* White text */
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-        /* Hero - Reduced */
+            background: var(--white);
+            color: var(--dark-blue);
+            padding: 8px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid transparent;
+            font-size: 13px;
+        }
+        
+        .quote-btn:hover {
+            background: transparent;
+            border-color: var(--white);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Hero Section */
         .hero {
-    padding: 80px 0 60px;
-    background: var(--sky-blue); /* Sky blue */
-    position: relative;
-    overflow: hidden;
-}
+            padding: 80px 0 60px;
+            background: var(--sky-blue);
+            position: relative;
+            overflow: hidden;
+        }
+        
         .hero-content {
             display: flex;
             align-items: center;
@@ -225,86 +225,97 @@ nav ul li a:hover, nav ul li a.active {
             position: relative;
             z-index: 1;
         }
+        
         .hero-text {
             flex: 1;
             min-width: 300px;
             padding-right: 30px;
         }
+        
         .hero-text h1 {
-    font-size: 2.2rem;
-    margin-bottom: 20px;
-    color: var(--primary); /* Red color */
-    line-height: 1.3;
-    font-weight: 600;
-}
-
-/* Hero paragraph color */
-.hero-text p {
-    font-size: 1rem;
-    color: #333; /* Darker color for better readability */
-    margin-bottom: 25px;
-    line-height: 1.6;
-}
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            line-height: 1.3;
+            font-weight: 600;
+        }
+        
+        .hero-text p {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
         .hero-buttons {
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
         }
+        
         .hero-buttons .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
-    background: var(--primary); /* Red */
-    color: var(--white); /* White text */
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 14px;
-    transition: all 0.3s;
-    border: 1px solid transparent;
-}
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+        
         .hero-buttons .btn:hover {
-    background: transparent;
-    border-color: var(--primary); /* Red border */
-    color: var(--primary); /* Red text */
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
+            background: transparent;
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
         .hero-buttons .btn i {
             font-size: 16px;
         }
+        
         .hero-image {
             flex: 1;
             min-width: 400px;
             text-align: center;
         }
+        
         .hero-image img {
-  width: 400px;              /* 👈 IMAGE WIDTH HERE */
-  max-width: 100%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  border: 5px solid white;
+            width: 400px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 5px solid white;
         }
-        /* Services - Reduced */
+        
+        /* Services Section */
         .services {
             padding: 60px 0;
             background: #f8f9fa;
         }
+        
         .section-title {
             text-align: center;
             margin-bottom: 40px;
         }
+        
         .section-title h2 {
             font-size: 2rem;
-            color: var(--dark-blue);
+            color: var(--primary);
             margin-bottom: 12px;
             font-weight: 600;
             position: relative;
             display: inline-block;
             padding-bottom: 10px;
         }
+        
         .section-title h2::after {
             content: '';
             position: absolute;
@@ -316,6 +327,7 @@ nav ul li a:hover, nav ul li a.active {
             background: var(--primary);
             border-radius: 1.5px;
         }
+        
         .section-title p {
             color: #666;
             font-size: 1rem;
@@ -323,23 +335,26 @@ nav ul li a:hover, nav ul li a.active {
             margin: 0 auto;
             line-height: 1.5;
         }
+        
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
             margin-bottom: 40px;
         }
+        
         .service-card {
             background: white;
             padding: 25px 20px;
             border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
             text-align: center;
             transition: all 0.3s;
             border: 1px solid transparent;
             position: relative;
             overflow: hidden;
         }
+        
         .service-card::before {
             content: '';
             position: absolute;
@@ -349,11 +364,13 @@ nav ul li a:hover, nav ul li a.active {
             height: 4px;
             background: linear-gradient(to right, var(--primary), var(--dark-blue));
         }
+        
         .service-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             border-color: var(--primary);
         }
+        
         .service-icon {
             width: 65px;
             height: 65px;
@@ -368,59 +385,70 @@ nav ul li a:hover, nav ul li a.active {
             box-shadow: 0 4px 12px rgba(77, 166, 255, 0.15);
             transition: transform 0.3s;
         }
+        
         .service-card:hover .service-icon {
             transform: scale(1.1);
             background: linear-gradient(135deg, var(--primary), var(--dark-blue));
             color: white;
         }
+        
         .service-card h3 {
             color: var(--dark-blue);
             margin-bottom: 15px;
             font-size: 1.3rem;
             font-weight: 600;
         }
+        
         .service-card p {
             color: #666;
             line-height: 1.6;
             font-size: 0.95rem;
         }
-        /* Footer - Reduced */
+        
+        /* Footer */
         footer {
             background: var(--dark-blue);
             color: white;
             padding: 50px 0 20px;
             background: linear-gradient(135deg, var(--dark-blue) 0%, #0d1a5c 100%);
         }
+        
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 40px;
             margin-bottom: 30px;
         }
+        
         .footer-about h3 {
             margin-bottom: 20px;
             font-size: 1.5rem;
             color: var(--white);
             font-weight: 600;
         }
+        
         .footer-about h3 span {
             color: var(--primary);
         }
+        
         .footer-about p {
             color: #d1d9ff;
             line-height: 1.6;
             margin-bottom: 20px;
             font-size: 0.95rem;
         }
+        
         .footer-contact h4 {
             margin-bottom: 20px;
             font-size: 1.2rem;
             color: var(--white);
             font-weight: 600;
         }
+        
         .footer-contact ul {
             list-style: none;
         }
+        
         .footer-contact ul li {
             margin-bottom: 14px;
             display: flex;
@@ -428,159 +456,179 @@ nav ul li a:hover, nav ul li a.active {
             gap: 10px;
             font-size: 0.95rem;
         }
+        
         .footer-contact ul li i {
             color: var(--primary);
             margin-top: 2px;
             font-size: 16px;
             min-width: 20px;
         }
+        
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.12);
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
             color: #a0a8e6;
             font-size: 13px;
         }
-        /* Responsive */
+        
+        /* Responsive Design */
         @media (max-width: 1100px) {
             .hero-text {
                 padding-right: 20px;
             }
+            
             .hero-text h1 {
                 font-size: 2rem;
             }
         }
+        
         @media (max-width: 992px) {
             .hero-content {
                 flex-direction: column;
                 gap: 40px;
             }
+            
             .hero-text {
                 padding-right: 0;
                 text-align: center;
             }
+            
             .hero-buttons {
                 justify-content: center;
             }
+            
             .company-name {
                 font-size: 22px;
             }
         }
-       @media (max-width: 768px) {
-    .top-bar .container {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-    }
-    
-    .contact-info {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-    
-    .social-links {
-        margin-left: 0;
-    }
-
+        
+        @media (max-width: 768px) {
+            .top-bar .container {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .contact-info {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .social-links {
+                margin-left: 0;
+            }
+            
             .header-content {
                 flex-direction: column;
                 gap: 20px;
             }
+            
             .logo-container {
                 flex-direction: column;
                 text-align: center;
                 gap: 10px;
             }
+            
             nav ul {
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 10px;
             }
+            
             nav ul li a {
                 padding: 6px 12px;
                 font-size: 13px;
             }
+            
             .hero-text h1 {
                 font-size: 1.8rem;
             }
+            
             .hero-text p {
                 font-size: 0.95rem;
             }
+            
             .section-title h2 {
-    font-size: 2rem;
-    color: var(--primary); /* Red */
-    margin-bottom: 12px;
-    font-weight: 600;
-    position: relative;
-    display: inline-block;
-    padding-bottom: 10px;
-}
+                font-size: 2rem;
+            }
+            
             .service-card {
                 padding: 20px 15px;
             }
+            
             .quote-btn {
                 padding: 7px 15px;
                 font-size: 12px;
             }
+            
+            .hero-image {
+                min-width: 300px;
+            }
+            
+            .hero-image img {
+                width: 300px;
+            }
         }
+        
         @media (max-width: 480px) {
-    .contact-info {
-        flex-direction: column;
-        gap: 8px;
-    }
-    
-    .contact-info span {
-        font-size: 12px;
-    }
-    
-    .contact-info span::before {
-        font-size: 12px;
-    }
+            .contact-info {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .contact-info span {
+                font-size: 12px;
+            }
+            
             .logo-img {
                 width: 50px;
                 height: 50px;
             }
+            
             .company-name {
                 font-size: 20px;
             }
+            
             .tagline {
                 font-size: 12px;
             }
+            
             .hero-buttons .btn {
                 padding: 10px 20px;
                 font-size: 13px;
                 width: 100%;
                 justify-content: center;
             }
+            
             .services-grid {
                 grid-template-columns: 1fr;
             }
-            .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    border-color: var(--primary); /* Red border */
-}
+            
+            .hero-image img {
+                width: 250px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Top Contact Bar -->
     <div class="top-bar">
-    <div class="container">
-        <div class="contact-info">
-            <span>📍 Chennai, Tamilnadu, India</span>
-            <span>📞 +91 824 867 6101</span>
-            <span>⏰ 24/7 Support Available</span>
-        </div>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/company/asmtechservices/" target="_blank" title="LinkedIn">
-                <i class="fab fa-linkedin"></i>
-            </a>
+        <div class="container">
+            <div class="contact-info">
+                <span>📍 Chennai, Tamilnadu, India</span>
+                <span>📞 +91 824 867 6101</span>
+                <span>⏰ 24/7 Support Available</span>
+            </div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/company/asmtechservices/" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
         </div>
     </div>
-</div>
 
     <!-- Main Dark Blue Header -->
     <header>
@@ -588,8 +636,7 @@ nav ul li a:hover, nav ul li a.active {
             <div class="container">
                 <div class="header-content">
                     <div class="logo-container">
-                        <!-- ADD YOUR LOGO HERE -->
-                       <img src="ASMlogo.jpeg" alt="ASM Tech Services Logo" class="logo-img"> 
+                        <img src="ASMlogo.jpeg" alt="ASM Tech Services Logo" class="logo-img">
                         <div class="logo-text">
                             <h1 class="company-name">
                                 <span class="asm">ASM Tech</span> Services
@@ -617,14 +664,13 @@ nav ul li a:hover, nav ul li a.active {
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Professional IT Services & Infrastructure Solutions</h1>
-                    <p>ASM Tech Services delivers comprehensive IT consultancy, services, and solutions, including infrastructure support, IT asset verification, and surveillance systems. We specialize in server deployment, network design, IT asset management, and Annual Maintenance Contract services using industry-leading OEM brands such as DELL, HPE, IBM, Cisco, D-Link, TP-Link, and Gigabyte.
-Our expertise also extends to CCTV camera installation and maintenance, access control systems from Matrix, eSSL, and ZKTeco, and intercom solutions from Matrix, NEC, Tata, and Panasonic, providing secure, scalable, and reliable technology solutions for businesses of all sizes.</p>
+                    <p>ASM Tech Services delivers comprehensive IT consultancy, services, and solutions, including infrastructure support, IT asset verification, and surveillance systems. We specialize in server deployment, network design, IT asset management, and Annual Maintenance Contract services using industry-leading OEM brands such as DELL, HPE, IBM, Cisco, D-Link, TP-Link, and Gigabyte. Our expertise also extends to CCTV camera installation and maintenance, access control systems from Matrix, eSSL, and ZKTeco, and intercom solutions from Matrix, NEC, Tata, and Panasonic, providing secure, scalable, and reliable technology solutions for businesses of all sizes.</p>
                     <div class="hero-buttons">
                         <a href="#services" class="btn"><i class="fas fa-cogs"></i> Explore Our Services</a>
                     </div>
                 </div>
                 <div class="hero-image">
-                   <img src="images/home-hero.png" alt="ASM Tech Services">
+                    <img src="images/home-hero.png" alt="ASM Tech Services">
                 </div>
             </div>
         </div>
@@ -680,20 +726,21 @@ Our expertise also extends to CCTV camera installation and maintenance, access c
                     <h3>IT Security Solutions</h3>
                     <p>Security audits, firewall configuration, antivirus deployment, data protection, and compliance implementation for business security.</p>
                 </div>
-            <div class="service-card">
+                <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-cctv"></i>
-                        </div>
-                <h3>CCTV & Surveillance</h3>
-                <p>CCTV Installation & Sales with reliable monitoring, maintenance, and AMC support for offices, commercial, and residential environments.</p>
-            </div>
-            <div class="service-card">
+                    </div>
+                    <h3>CCTV & Surveillance</h3>
+                    <p>CCTV Installation & Sales with reliable monitoring, maintenance, and AMC support for offices, commercial, and residential environments.</p>
+                </div>
+                <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-computer"></i>
-                <h3>IT Support Technician Training (Lab Focused)</h3>
-
-<p>Practical, lab-focused IT Support Technician training for entry-level and intermediate professionals, covering L1 & L2 support, hardware troubleshooting, Windows & Linux OS installation, networking fundamentals, IT security basics, and hands-on virtual machine practice.</p>
+                    </div>
+                    <h3>IT Support Technician Training</h3>
+                    <p>Lab-focused IT Support Technician training covering L1 & L2 support, hardware troubleshooting, OS installation, networking fundamentals, and IT security basics.</p>
                 </div>
+            </div>
         </div>
     </section>
 
@@ -703,7 +750,7 @@ Our expertise also extends to CCTV camera installation and maintenance, access c
             <div class="footer-content">
                 <div class="footer-about">
                     <h3><span>ASM</span> Tech Services</h3>
-                    <p>ASM Tech Services provides comprehensive IT consultancy, infrastructure support, server and network solutions, IT asset management, and AMC services. We also deliver CCTV installation, access control, and intercom system solutions, along with practical, lab-focused IT Support Technician training programs designed for entry-level and intermediate professionals.</p>
+                    <p>ASM Tech Services provides comprehensive IT consultancy, infrastructure support, server and network solutions, IT asset management, and AMC services. We also deliver CCTV installation, access control, and intercom system solutions, along with practical, lab-focused IT Support Technician training programs.</p>
                 </div>
                 <div class="footer-contact">
                     <h4>Contact Info</h4>
@@ -727,10 +774,10 @@ Our expertise also extends to CCTV camera installation and maintenance, access c
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
-                if(targetId === '#' || targetId.includes('.html')) return;
+                if (targetId === '#' || targetId.includes('.html')) return;
                 
                 const targetElement = document.querySelector(targetId);
-                if(targetElement) {
+                if (targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
