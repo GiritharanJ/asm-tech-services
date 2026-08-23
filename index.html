@@ -1,1066 +1,521 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASM Tech Services - IT Solutions & Services</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #ff4d4d;
-            --primary-dark: #ff3333;
-            --primary-light: #ffe6e6;
-            --dark-blue: #0d1a5c;
-            --dark-blue-light: #1a2980;
-            --dark: #222;
-            --light: #f8f9fa;
-            --white: #ffffff;
-            --sky-blue: #e6f7ff;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            line-height: 1.5;
-            color: #333;
-            background-color: var(--white);
-            font-size: 14px;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Top Contact Bar */
-        .top-bar {
-            background: var(--dark-blue);
-            color: white;
-            padding: 10px 0;
-            font-size: 13px;
-            border-bottom: 1px solid var(--primary);
-        }
-        
-        .top-bar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .contact-info {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-        
-        .contact-info span {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            white-space: nowrap;
-        }
-        
-        .social-links {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-left: 20px;
-        }
-        
-        .social-links a {
-            color: white;
-            font-size: 18px;
-            transition: transform 0.3s, color 0.3s;
-        }
-        
-        .social-links a:hover {
-            transform: translateY(-2px);
-            color: var(--primary);
-        }
-        
-        /* Main Header */
-        header {
-            background: var(--dark-blue);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
-            padding: 0;
-        }
-        
-        .header-main {
-            padding: 12px 0;
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .logo-img {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            background: transparent;
-        }
-        
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .company-name {
-            font-size: 26px;
-            font-weight: bold;
-            color: var(--white);
-            margin: 0;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-            letter-spacing: 0.5px;
-            line-height: 1.2;
-        }
-        
-        .company-name .asm {
-            color: var(--white);
-            font-weight: 700;
-        }
-        
-        .company-name .tech {
-            color: var(--primary);
-            font-weight: 600;
-        }
-        
-        .tagline {
-            font-size: 13px;
-            color: var(--primary-light);
-            margin: 3px 0 0 0;
-            font-style: italic;
-            letter-spacing: 0.3px;
-        }
-        
-        /* Navigation */
-        nav ul {
-            display: flex;
-            list-style: none;
-            align-items: center;
-            gap: 20px;
-            margin: 0;
-            padding: 0;
-        }
-        
-        nav ul li a {
-            text-decoration: none;
-            color: var(--white);
-            font-weight: 500;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 14px;
-            border-radius: 4px;
-            font-size: 14px;
-            letter-spacing: 0.3px;
-        }
-        
-        nav ul li a:hover,
-        nav ul li a.active {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-1px);
-            color: var(--white);
-        }
-        
-        nav ul li a i {
-            font-size: 14px;
-        }
-        
-        .quote-btn {
-            background: var(--white);
-            color: var(--dark-blue);
-            padding: 8px 20px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            border: 1px solid transparent;
-            font-size: 13px;
-        }
-        
-        .quote-btn:hover {
-            background: transparent;
-            border-color: var(--white);
-            color: var(--white);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: 80px 0 60px;
-            background: var(--sky-blue);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-content {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero-text {
-            flex: 1;
-            min-width: 300px;
-            padding-right: 30px;
-        }
-        
-        .hero-text h1 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-            line-height: 1.3;
-            font-weight: 600;
-        }
-        
-        .hero-text p {
-            font-size: 1rem;
-            color: #333;
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .hero-buttons .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: var(--primary);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 500;
-            font-size: 14px;
-            transition: all 0.3s;
-            border: 1px solid transparent;
-        }
-        
-        .hero-buttons .btn:hover {
-            background: transparent;
-            border-color: var(--primary);
-            color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        
-        .hero-buttons .btn i {
-            font-size: 16px;
-        }
-        
-        .hero-image {
-            flex: 1;
-            min-width: 400px;
-            text-align: center;
-        }
-        
-        .hero-image img {
-            width: 400px;
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border: 5px solid white;
-        }
-        /* Logo Slider Styles */
-.logo-slider-section {
-    background: #fffae6; /* Light yellow background */
-    padding: 40px 0;
-    overflow: hidden;
-    border-top: 3px solid #ffcc00;
-    border-bottom: 3px solid #ffcc00;
-}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT Services Chennai | Server, Network, CCTV & AMC Support - ASM Tech Services</title>
+<meta name="description" content="ASM Tech Services provides IT infrastructure, server & network setup, CCTV installation, IT asset management, AMC support and IT technician training in Chennai. 24/7 support.">
+<meta name="keywords" content="IT services Chennai, server AMC Chennai, network infrastructure setup, CCTV installation Chennai, IT asset verification, IT support technician training, IT consultancy Chennai">
+<link rel="canonical" href="https://www.asmtechservices.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ASM Tech Services — IT Infrastructure, Networking & CCTV Solutions in Chennai">
+<meta property="og:description" content="Server deployment, network design, CCTV surveillance, IT asset management and AMC services for businesses across Chennai, Tamil Nadu.">
+<meta property="og:locale" content="en_IN">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-.section-subtitle {
-    text-align: center;
-    font-size: 1.5rem;
-    margin-bottom: 30px;
-    color: #333;
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "ASM Tech Services",
+  "image": "https://www.asmtechservices.com/home-hero.JPG",
+  "description": "IT infrastructure, server and network solutions, CCTV surveillance, IT asset management and AMC services in Chennai.",
+  "telephone": "+91-824-867-6101",
+  "email": "info@asmtechservices.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Chennai",
+    "addressRegion": "Tamil Nadu",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 13.1694444,
+    "longitude": 80.3033611
+  },
+  "url": "https://www.asmtechservices.com/",
+  "sameAs": ["https://www.linkedin.com/company/asmtechservices/"],
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "areaServed": "Chennai, Tamil Nadu"
 }
+</script>
 
-.slider {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-}
-
-.slide-track {
-    display: flex;
-    animation: scroll 20s linear infinite;
-    width: calc(250px * 26); /* Adjust based on slide count */
-}
-
-.slide {
-    width: 250px;
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 20px;
-    flex-shrink: 0;
-}
-
-.slide img {
-    max-width: 180px;
-    max-height: 80px;
-    filter: grayscale(100%);
-    transition: filter 0.3s ease;
-}
-
-.slide img:hover {
-    filter: grayscale(0%);
-}
-
-/* Animation */
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What IT services does ASM Tech Services offer in Chennai?",
+      "acceptedAnswer": { "@type": "Answer", "text": "We provide server installation and maintenance, network infrastructure setup, CCTV and surveillance systems, IT asset verification, desktop and laptop support, IT security solutions, and Annual Maintenance Contracts (AMC) for businesses in Chennai." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer Annual Maintenance Contracts (AMC) for IT hardware?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. We offer AMC coverage for servers, networking equipment, desktops, laptops and CCTV systems, with scheduled preventive checks and on-call support." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which brands do you work with for hardware and networking?",
+      "acceptedAnswer": { "@type": "Answer", "text": "We work with industry OEM brands including Dell, HPE, IBM, Cisco, TP-Link, D-Link, NEC, Panasonic, Samsung and Tata, among others, depending on the project." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you provide IT support technician training?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, we run lab-focused IT Support Technician training covering L1 and L2 support, hardware troubleshooting, OS installation, networking fundamentals, and IT security basics." }
     }
-    100% {
-        transform: translateX(calc(-250px * 13)); /* Half of total slides */
-    }
+  ]
 }
-        /* Services Section */
-        .services {
-            padding: 60px 0;
-            background: #f8f9fa;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .section-title h2 {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 12px;
-            font-weight: 600;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--primary);
-            border-radius: 1.5px;
-        }
-        
-        .section-title p {
-            color: #666;
-            font-size: 1rem;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.5;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-        
-        .service-card {
-            background: white;
-            padding: 25px 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
-            text-align: center;
-            transition: all 0.3s;
-            border: 1px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary), var(--dark-blue));
-        }
-        
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border-color: var(--primary);
-        }
-        
-        .service-icon {
-            width: 65px;
-            height: 65px;
-            background: linear-gradient(135deg, var(--primary-light), white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 18px;
-            color: var(--dark-blue);
-            font-size: 26px;
-            box-shadow: 0 4px 12px rgba(77, 166, 255, 0.15);
-            transition: transform 0.3s;
-        }
-        
-        .service-card:hover .service-icon {
-            transform: scale(1.1);
-            background: linear-gradient(135deg, var(--primary), var(--dark-blue));
-            color: white;
-        }
-        
-        .service-card h3 {
-            color: var(--dark-blue);
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-        
-        .service-card p {
-            color: #666;
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark-blue);
-            color: white;
-            padding: 50px 0 20px;
-            background: linear-gradient(135deg, var(--dark-blue) 0%, #0d1a5c 100%);
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-bottom: 30px;
-        }
-        
-        .footer-about h3 {
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            color: var(--white);
-            font-weight: 600;
-        }
-        
-        .footer-about h3 span {
-            color: var(--primary);
-        }
-        
-        .footer-about p {
-            color: #d1d9ff;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
-        
-        .footer-contact h4 {
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-            color: var(--white);
-            font-weight: 600;
-        }
-        
-        .footer-contact ul {
-            list-style: none;
-        }
-        
-        .footer-contact ul li {
-            margin-bottom: 14px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 0.95rem;
-        }
-        
-        .footer-contact ul li i {
-            color: var(--primary);
-            margin-top: 2px;
-            font-size: 16px;
-            min-width: 20px;
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.12);
-            color: #a0a8e6;
-            font-size: 13px;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 1100px) {
-            .hero-text {
-                padding-right: 20px;
-            }
-            
-            .hero-text h1 {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .hero-content {
-                flex-direction: column;
-                gap: 40px;
-            }
-            
-            .hero-text {
-                padding-right: 0;
-                text-align: center;
-            }
-            
-            .hero-buttons {
-                justify-content: center;
-            }
-            
-            .company-name {
-                font-size: 22px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .top-bar .container {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 10px;
-            }
-            
-            .contact-info {
-                width: 100%;
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 15px;
-            }
-            
-            .social-links {
-                margin-left: 0;
-            }
-            
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .logo-container {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
-            }
-            
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 10px;
-            }
-            
-            nav ul li a {
-                padding: 6px 12px;
-                font-size: 13px;
-            }
-            
-            .hero-text h1 {
-                font-size: 1.8rem;
-            }
-            
-            .hero-text p {
-                font-size: 0.95rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .service-card {
-                padding: 20px 15px;
-            }
-            
-            .quote-btn {
-                padding: 7px 15px;
-                font-size: 12px;
-            }
-            
-            .hero-image {
-                min-width: 300px;
-            }
-            
-            .hero-image img {
-                width: 300px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .contact-info {
-                flex-direction: column;
-                gap: 8px;
-            }
-            
-            .contact-info span {
-                font-size: 12px;
-            }
-            
-            .logo-img {
-                width: 50px;
-                height: 50px;
-            }
-            
-            .company-name {
-                font-size: 20px;
-            }
-            
-            .tagline {
-                font-size: 12px;
-            }
-            
-            .hero-buttons .btn {
-                padding: 10px 20px;
-                font-size: 13px;
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-image img {
-                width: 250px;
-            }
-        }
-    </style>
+</script>
+
+<style>
+:root{
+  --ink:#0A1628;
+  --ink-soft:#1B2B45;
+  --paper:#F3F5F7;
+  --paper-raised:#FFFFFF;
+  --signal:#F5A623;
+  --signal-dim:#C97F12;
+  --live:#3DDC97;
+  --wire:#93A2B8;
+  --line:#DCE2EA;
+  --text:#26313F;
+  --text-dim:#5B6B80;
+
+  --display: 'Space Grotesk', sans-serif;
+  --body: 'Inter', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--body);
+  color:var(--text);
+  background:var(--paper);
+  line-height:1.6;
+  font-size:16px;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;}
+.container{width:92%;max-width:1180px;margin:0 auto;}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--signal-dim);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:14px;
+}
+.eyebrow::before{
+  content:'';
+  width:7px;height:7px;border-radius:50%;
+  background:var(--live);
+  box-shadow:0 0 0 3px rgba(61,220,151,0.18);
+  flex-shrink:0;
+}
+h1,h2,h3{font-family:var(--display);color:var(--ink);letter-spacing:-0.01em;}
+.section-head{max-width:640px;margin-bottom:44px;}
+.section-head h2{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:12px;}
+.section-head p{color:var(--text-dim);font-size:1.02rem;}
+section{padding:88px 0;}
+
+/* Skip link for a11y */
+.skip-link{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:10px 16px;z-index:2000;}
+.skip-link:focus{left:12px;top:12px;}
+
+/* Top bar */
+.top-bar{background:var(--ink);color:#C6D0DE;font-family:var(--mono);font-size:12.5px;padding:9px 0;border-bottom:1px solid rgba(245,166,35,0.25);}
+.top-bar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.top-bar .contact-info{display:flex;gap:26px;flex-wrap:wrap;}
+.top-bar .contact-info span{display:flex;align-items:center;gap:7px;white-space:nowrap;}
+.top-bar i{color:var(--signal);}
+.top-bar .social-links a{color:#C6D0DE;font-size:15px;transition:color .2s;}
+.top-bar .social-links a:hover{color:var(--signal);}
+
+/* Header */
+header{background:rgba(10,22,40,0.96);backdrop-filter:blur(6px);position:sticky;top:0;z-index:1000;border-bottom:1px solid rgba(255,255,255,0.06);}
+.header-content{display:flex;justify-content:space-between;align-items:center;padding:14px 0;}
+.logo-container{display:flex;align-items:center;gap:13px;}
+.logo-img{width:46px;height:46px;object-fit:contain;border-radius:8px;}
+.company-name{font-size:20px;font-weight:700;color:#fff;line-height:1.15;}
+.company-name .accent{color:var(--signal);}
+.tagline{font-family:var(--mono);font-size:11px;color:var(--wire);letter-spacing:0.04em;margin-top:2px;}
+nav ul{display:flex;list-style:none;align-items:center;gap:4px;}
+nav ul li a{text-decoration:none;color:#D6DEE9;font-weight:500;font-size:14px;padding:9px 14px;border-radius:6px;transition:background .2s,color .2s;}
+nav ul li a:hover{background:rgba(255,255,255,0.08);color:#fff;}
+.quote-btn{background:var(--signal);color:var(--ink);font-weight:700;padding:9px 18px;border-radius:6px;font-size:13.5px;text-decoration:none;transition:transform .2s,background .2s;display:inline-block;}
+.quote-btn:hover{background:#ffb84d;transform:translateY(-1px);}
+
+/* Hero */
+.hero{background:linear-gradient(180deg,var(--ink) 0%,#0F2038 100%);color:#fff;padding:76px 0 60px;position:relative;overflow:hidden;}
+.hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:40px;align-items:center;}
+.hero-text .eyebrow{color:var(--signal);}
+.hero-text .eyebrow::before{background:var(--signal);box-shadow:0 0 0 3px rgba(245,166,35,0.2);}
+.hero-text h1{font-size:clamp(2rem,4vw,2.85rem);line-height:1.18;color:#fff;margin-bottom:18px;}
+.hero-text h1 span{color:var(--signal);}
+.hero-text p{color:#B9C4D3;font-size:1.05rem;max-width:520px;margin-bottom:30px;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px;}
+.btn-primary{background:var(--signal);color:var(--ink);font-weight:700;padding:13px 26px;border-radius:7px;text-decoration:none;display:inline-flex;align-items:center;gap:9px;transition:transform .2s;font-size:14.5px;}
+.btn-primary:hover{transform:translateY(-2px);}
+.btn-ghost{border:1px solid rgba(255,255,255,0.28);color:#fff;padding:13px 24px;border-radius:7px;text-decoration:none;display:inline-flex;align-items:center;gap:9px;font-size:14.5px;transition:border-color .2s,background .2s;}
+.btn-ghost:hover{border-color:var(--signal);background:rgba(245,166,35,0.08);}
+.hero-meta{display:flex;gap:28px;flex-wrap:wrap;font-family:var(--mono);font-size:12.5px;color:var(--wire);}
+.hero-meta span{display:flex;align-items:center;gap:7px;}
+.hero-meta i{color:var(--live);}
+
+/* Network diagram */
+.net-wrap{position:relative;}
+.net-wrap svg{width:100%;height:auto;}
+.net-node{fill:#0F2038;stroke:var(--wire);stroke-width:1.4;}
+.net-node.active{stroke:var(--signal);}
+.net-line{stroke:rgba(147,162,184,0.35);stroke-width:1.4;fill:none;}
+.pulse{fill:var(--signal);filter:drop-shadow(0 0 4px rgba(245,166,35,0.9));}
+@media (prefers-reduced-motion: no-preference){
+  .pulse{ offset-rotate:0deg; }
+}
+.net-label{font-family:var(--mono);font-size:10px;fill:#8FA0B8;}
+
+/* Trust ticker */
+.ticker-section{background:var(--paper-raised);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0;overflow:hidden;}
+.ticker-label{font-family:var(--mono);font-size:11px;letter-spacing:0.12em;color:var(--text-dim);text-transform:uppercase;text-align:center;margin-bottom:16px;}
+.ticker-track{display:flex;gap:14px;width:max-content;animation:ticker 34s linear infinite;}
+.ticker-section:hover .ticker-track{animation-play-state:paused;}
+.chip{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--ink-soft);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:9px 18px;white-space:nowrap;}
+@keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* Services */
+.services{background:var(--paper);}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px;}
+.service-card{background:var(--paper-raised);border:1px solid var(--line);border-radius:10px;padding:28px 24px;transition:border-color .2s,transform .2s;}
+.service-card:hover{border-color:var(--signal);transform:translateY(-4px);}
+.service-num{font-family:var(--mono);font-size:11px;color:var(--signal-dim);margin-bottom:14px;}
+.service-icon{width:44px;height:44px;border-radius:9px;background:var(--ink);color:var(--signal);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:16px;}
+.service-card h3{font-size:1.12rem;margin-bottom:10px;}
+.service-card p{color:var(--text-dim);font-size:0.93rem;}
+
+/* Process */
+.process{background:var(--ink);color:#fff;}
+.process .section-head h2, .process .eyebrow{color:#fff;}
+.process .section-head p{color:var(--wire);}
+.process-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0;position:relative;}
+.process-step{padding:0 22px 0 0;position:relative;}
+.process-step .step-index{font-family:var(--mono);font-size:13px;color:var(--signal);margin-bottom:10px;display:block;}
+.process-step h3{color:#fff;font-size:1.05rem;margin-bottom:8px;}
+.process-step p{color:var(--wire);font-size:0.92rem;}
+.process-step:not(:last-child){border-right:1px dashed rgba(255,255,255,0.15);}
+
+/* FAQ */
+.faq-list{max-width:760px;}
+.faq-item{border-bottom:1px solid var(--line);padding:22px 0;}
+.faq-item summary{cursor:pointer;font-family:var(--display);font-weight:600;color:var(--ink);font-size:1.02rem;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{content:'+';font-family:var(--mono);color:var(--signal-dim);font-size:1.3rem;flex-shrink:0;}
+.faq-item[open] summary::after{content:'−';}
+.faq-item p{color:var(--text-dim);margin-top:12px;font-size:0.95rem;}
+
+/* Contact / Footer */
+.contact-section{background:var(--paper-raised);border-top:1px solid var(--line);}
+.contact-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:start;}
+.contact-card{background:var(--ink);color:#fff;border-radius:12px;padding:30px;}
+.contact-card h3{color:#fff;font-size:1.2rem;margin-bottom:20px;}
+.contact-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px;font-size:0.95rem;color:#D6DEE9;}
+.contact-row i{color:var(--signal);margin-top:3px;width:16px;}
+.contact-row a{color:#fff;text-decoration:none;}
+.map-frame{border-radius:12px;overflow:hidden;border:1px solid var(--line);}
+.map-frame iframe{width:100%;height:280px;border:0;display:block;}
+
+footer{background:var(--ink);color:var(--wire);padding:26px 0;text-align:center;font-size:13px;border-top:1px solid rgba(255,255,255,0.06);}
+footer strong{color:#fff;}
+
+@media (max-width:960px){
+  .hero-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  .process-step:not(:last-child){border-right:none;border-bottom:1px dashed rgba(255,255,255,0.15);padding-bottom:26px;margin-bottom:26px;}
+}
+@media (max-width:760px){
+  nav{display:none;}
+  .top-bar .contact-info{justify-content:center;width:100%;}
+  section{padding:60px 0;}
+}
+</style>
 </head>
 <body>
-    <!-- Top Contact Bar -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="contact-info">
-                <span>📍 Chennai, Tamilnadu, India</span>
-                <span>📞 +91 824 867 6101</span>
-                <span>⏰ 24/7 Support Available</span>
-            </div>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/company/asmtechservices/" target="_blank" title="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-            </div>
-        </div>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<div class="top-bar">
+  <div class="container">
+    <div class="contact-info">
+      <span><i class="fas fa-location-dot"></i> Chennai, Tamil Nadu, India</span>
+      <span><i class="fas fa-phone"></i> +91 824 867 6101</span>
+      <span><i class="fas fa-clock"></i> 24/7 Support</span>
     </div>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/company/asmtechservices/" target="_blank" rel="noopener" aria-label="ASM Tech Services on LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </div>
+</div>
 
-    <!-- Main Dark Blue Header -->
-    <header>
-        <div class="header-main">
-            <div class="container">
-                <div class="header-content">
-                    <div class="logo-container">
-                        <img src="ASMlogo.jpeg" alt="ASM Tech Services Logo" class="logo-img">
-                        <div class="logo-text">
-                            <h1 class="company-name">
-                                <span class="asm">ASM Tech</span> Services
-                            </h1>
-                            <p class="tagline">Quality IT Solutions & Services</p>
-                        </div>
-                    </div>
-                    <nav>
-                        <ul>
-                            <li><a href="#" class="active"><i class="fas fa-home"></i> Home</a></li>
-                            <li><a href="#"><i class="fas fa-info-circle"></i> About Us</a></li>
-                            <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
-                            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
-                            <li><a href="requirements.html" class="quote-btn"><i class="fas fa-file-alt"></i> Get Free Quote</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+<header>
+  <div class="container header-content">
+    <div class="logo-container">
+      <img src="ASMlogo.jpeg" alt="ASM Tech Services logo" class="logo-img" width="46" height="46">
+      <div>
+        <p class="company-name"><span class="accent">ASM</span> Tech Services</p>
+        <p class="tagline">IT INFRASTRUCTURE · CHENNAI</p>
+      </div>
+    </div>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">How We Work</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="requirements.html" class="quote-btn">Get Free Quote</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <p class="eyebrow">Chennai · IT Infrastructure Partner</p>
+        <h1>IT infrastructure that stays <span>online, secure, and accounted for.</span></h1>
+        <p>ASM Tech Services designs and maintains the servers, networks, surveillance and asset systems that Chennai businesses run on — backed by 24/7 support and Annual Maintenance Contracts across every major OEM brand.</p>
+        <div class="hero-actions">
+          <a href="requirements.html" class="btn-primary"><i class="fas fa-file-alt"></i> Request a Quote</a>
+          <a href="#services" class="btn-ghost"><i class="fas fa-diagram-project"></i> View Services</a>
         </div>
-    </header>
-
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Professional IT Services & Infrastructure Solutions</h1>
-                    <p>ASM Tech Services delivers comprehensive IT consultancy, services, and solutions, including infrastructure support, IT asset verification, and surveillance systems. We specialize in server deployment, network design, IT asset management, and Annual Maintenance Contract services using industry-leading OEM brands below.</p>
-                    <div class="hero-buttons">
-                        <a href="#services" class="btn"><i class="fas fa-cogs"></i> Explore Our Services</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <img src="home-hero.JPG" alt="Home Hero" style="width: 100%; max-width: 800px;">
-                </div>
-            </div>
+        <div class="hero-meta">
+          <span><i class="fas fa-circle"></i> 24/7 monitoring & support</span>
+          <span><i class="fas fa-circle"></i> Multi-OEM certified</span>
+          <span><i class="fas fa-circle"></i> On-site across Chennai</span>
         </div>
-    </section>
+      </div>
 
-  
-             
-              
-              
-              
-              
-                
-  <!-- Text-Based Logo Slider with Colorful Borders -->
-<section class="logo-slider-section" style="background: linear-gradient(135deg, #e6f0ff 0%, white 100%); padding: 15px 0; border-top: 4px solid #dc2626; border-bottom: 4px solid #1e40af;">
+      <div class="net-wrap" role="img" aria-label="Illustration of a monitored network of servers, switches and cameras connected to a central hub">
+        <svg viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg">
+          <path id="p1" class="net-line" d="M240,200 L100,90"/>
+          <path id="p2" class="net-line" d="M240,200 L380,90"/>
+          <path id="p3" class="net-line" d="M240,200 L90,270"/>
+          <path id="p4" class="net-line" d="M240,200 L380,280"/>
+          <path id="p5" class="net-line" d="M240,200 L240,340"/>
+
+          <circle cx="240" cy="200" r="26" class="net-node active"/>
+          <text x="240" y="205" text-anchor="middle" class="net-label" fill="#F5A623" font-size="11">HUB</text>
+
+          <circle cx="100" cy="90" r="17" class="net-node"/>
+          <text x="100" y="60" text-anchor="middle" class="net-label">SERVER</text>
+
+          <circle cx="380" cy="90" r="17" class="net-node"/>
+          <text x="380" y="60" text-anchor="middle" class="net-label">NETWORK</text>
+
+          <circle cx="90" cy="270" r="17" class="net-node"/>
+          <text x="90" y="304" text-anchor="middle" class="net-label">CCTV</text>
+
+          <circle cx="380" cy="280" r="17" class="net-node"/>
+          <text x="380" y="314" text-anchor="middle" class="net-label">ASSETS</text>
+
+          <circle cx="240" cy="340" r="17" class="net-node"/>
+          <text x="240" y="374" text-anchor="middle" class="net-label">ENDPOINTS</text>
+
+          <circle r="4" class="pulse"><animateMotion dur="3.2s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1"><mpath href="#p1"/></animateMotion></circle>
+          <circle r="4" class="pulse"><animateMotion dur="2.6s" begin="0.4s" repeatCount="indefinite"><mpath href="#p2"/></animateMotion></circle>
+          <circle r="4" class="pulse"><animateMotion dur="3.6s" begin="0.9s" repeatCount="indefinite"><mpath href="#p3"/></animateMotion></circle>
+          <circle r="4" class="pulse"><animateMotion dur="2.9s" begin="1.3s" repeatCount="indefinite"><mpath href="#p4"/></animateMotion></circle>
+          <circle r="4" class="pulse"><animateMotion dur="3.1s" begin="0.6s" repeatCount="indefinite"><mpath href="#p5"/></animateMotion></circle>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST TICKER -->
+  <section class="ticker-section" aria-label="OEM brands we work with">
+    <p class="ticker-label">OEM brands we deploy & maintain</p>
+    <div class="ticker-track">
+      <span class="chip">Dell</span><span class="chip">HPE</span><span class="chip">IBM</span><span class="chip">Cisco</span>
+      <span class="chip">NEC</span><span class="chip">Tata</span><span class="chip">Panasonic</span><span class="chip">Samsung</span>
+      <span class="chip">TP-Link</span><span class="chip">D-Link</span><span class="chip">Gigabyte</span><span class="chip">Matrix</span><span class="chip">eSSL</span>
+      <span class="chip">Dell</span><span class="chip">HPE</span><span class="chip">IBM</span><span class="chip">Cisco</span>
+      <span class="chip">NEC</span><span class="chip">Tata</span><span class="chip">Panasonic</span><span class="chip">Samsung</span>
+      <span class="chip">TP-Link</span><span class="chip">D-Link</span><span class="chip">Gigabyte</span><span class="chip">Matrix</span><span class="chip">eSSL</span>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
     <div class="container">
-        <h2 class="section-subtitle" style="color: #dc2626; text-align: center; font-size: 1.2rem; margin-bottom: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
-            TRUSTED BY INDUSTRY LEADERS
-        </h2>
-        <div class="slider" style="position: relative; width: 100%; overflow: hidden;">
-            <div class="slide-track" style="display: flex; animation: scroll 25s linear infinite; width: calc(100px * 28);">
-                
-                <!-- First Set -->
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">Teco</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">NEC</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">Tata</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">Panasonic</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">DELL</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">HPE</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">IBM</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">Cisco</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">D-Link</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">TP-Link</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">Gigabyte</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">Matrix</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">eSSL</span>
-                </div>
-                
-                <!-- Second Set (Duplicate for seamless loop) -->
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">Teco</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">NEC</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">Tata</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">Panasonic</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">DELL</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">HPE</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">IBM</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">Cisco</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">D-Link</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">TP-Link</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">Gigabyte</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">Matrix</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">eSSL</span>
-                </div>
-                 <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">Samsung</span>
-                </div>
-                
-                <!-- Third Set (Extra duplicates for smoother loop) -->
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">Teco</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">NEC</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">Tata</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">Panasonic</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">DELL</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">HPE</span>
-                </div>
-                <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">IBM</span>
-                </div>
-                 <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">Samsung</span>
-                </div>
-                 <div class="slide" style="width: 100px; height: 30px; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; margin: 0 2px; background: rgba(255,255,255,0.9); border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;">
-                    <span style="font-size: 0.8rem; font-weight: bold; color: #1e40af;">Samsung</span>
-                </div>
-                
-            </div>
+      <div class="section-head">
+        <p class="eyebrow">What we do</p>
+        <h2>IT services built for Chennai businesses</h2>
+        <p>From the server room to the front desk camera, we plan, install and maintain the systems your operations depend on — with AMC support that keeps them that way.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-server"></i></div>
+          <h3>Server Installation & Maintenance</h3>
+          <p>Setup, configuration, patching and monitoring for Windows and Linux servers, with proactive maintenance to reduce downtime.</p>
         </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-network-wired"></i></div>
+          <h3>IT Infrastructure & Network Setup</h3>
+          <p>Structured cabling, switch and router configuration, wireless rollout, and network design for offices of any size.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-video"></i></div>
+          <h3>CCTV & Surveillance Systems</h3>
+          <p>CCTV installation, access control and intercom systems with monitoring, maintenance and AMC for commercial and residential sites.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-clipboard-check"></i></div>
+          <h3>IT Asset Verification & Management</h3>
+          <p>Physical asset tracking, tagging and audit across sites, with reporting that keeps your inventory records accurate.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-shield-halved"></i></div>
+          <h3>IT Security Solutions</h3>
+          <p>Security audits, firewall configuration, antivirus deployment and data-protection practices aligned to your compliance needs.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-laptop"></i></div>
+          <h3>Desktop & Laptop Support</h3>
+          <p>Hardware repair, OS installation and troubleshooting across all major brands, on-site or at our service point.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-headset"></i></div>
+          <h3>IT Consultancy & AMC Support</h3>
+          <p>Infrastructure planning, vendor coordination and Annual Maintenance Contracts that give you one point of contact for IT.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+          <h3>IT Support Technician Training</h3>
+          <p>Lab-focused training in L1/L2 support, hardware troubleshooting, OS installation, networking fundamentals and security basics.</p>
+        </div>
+
+      </div>
     </div>
-    
-    <!-- Animation CSS -->
-    <style>
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(calc(-100px * 14));
-            }
-        }
-        
-        /* Hover effect */
-        .slide:hover {
-            background: white !important;
-            box-shadow: 0 3px 8px rgba(220, 38, 38, 0.2) !important;
-            border-color: #dc2626 !important;
-            transform: translateY(-2px);
-            transition: all 0.3s ease;
-        }
-        
-        .slide:hover span {
-            color: #dc2626 !important;
-        }
-    </style>
-</section>
+  </section>
 
-    <!-- Services -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our IT Services</h2>
-                <p>End-to-end IT consultancy, infrastructure and network solutions, asset management, surveillance systems, and lab-focused IT Support Technician training.</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h3>CCTV & Surveillance</h3>
-                    <p>CCTV Installation & Sales with reliable monitoring, maintenance, and AMC support for offices, commercial, and residential environments.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-computer"></i>
-                    </div>
-                    <h3>IT Support Technician Training</h3>
-                    <p>Lab-focused IT Support Technician training covering L1 & L2 support, hardware troubleshooting, OS installation, networking fundamentals, and IT security basics.</p>
-                </div>
-            </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>IT Consultancy & Support</h3>
-                    <p>Expert IT consulting, server implementation, laptop & desktop support, network planning, and infrastructure design for optimal business operations.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <h3>Server Installation & Maintenance</h3>
-                    <p>Complete server setup, configuration, maintenance, and monitoring services for Windows and Linux environments.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop"></i>
-                    </div>
-                    <h3>Desktop & Laptop Services</h3>
-                    <p>Hardware repair, software installation, OS configuration, and troubleshooting for all major brands of desktops and laptops.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3>IT Infrastructure Setup</h3>
-                    <p>Complete network infrastructure design, cabling, switch/router configuration, wireless setup, and security implementation.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-clipboard-check"></i>
-                    </div>
-                    <h3>Asset Verification</h3>
-                    <p>Comprehensive asset tracking, verification, and management for all IT equipment across global locations with detailed reporting.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>IT Security Solutions</h3>
-                    <p>Security audits, firewall configuration, antivirus deployment, data protection, and compliance implementation for business security.</p>
-                </div>
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">How we work</p>
+        <h2>From site visit to signed-off AMC</h2>
+        <p>A straightforward path from first call to ongoing support, so nothing about your infrastructure is left to guesswork.</p>
+      </div>
+      <div class="process-list">
+        <div class="process-step">
+          <span class="step-index">01</span>
+          <h3>Assess</h3>
+          <p>We review your site, existing hardware and network to understand what's needed and what can be reused.</p>
         </div>
-    </section>
-
-  <!-- Footer with Contact & Map Side by Side -->
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: start; gap: 20px; padding: 20px; background: #f8fafc; border-top: 3px solid #1a56db;">
-
-    <!-- Left: Company Info & Contact -->
-    <div style="flex: 2; min-width: 300px;">
-        <h2 style="color: #1e40af; margin-bottom: 10px; font-size: 1.5rem;">ASM Tech Services</h2>
-        <p style="color: #555; line-height: 1.6; margin-bottom: 20px;">
-            ASM Tech Services provides comprehensive IT consultancy, infrastructure support, server and network solutions, IT asset management, and AMC services. We also deliver CCTV installation, access control, and intercom system solutions, along with practical, lab-focused IT Support Technician training programs.
-        </p>
-        
-        <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #dc2626; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-            <h3 style="color: #1e40af; margin-bottom: 15px;">Our Location</h3>
-            
-            <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                <span style="background: #1e40af; color: white; padding: 8px; border-radius: 50%; margin-right: 10px; font-size: 0.9rem;">📍</span>
-                <div>
-                    <strong style="color: #333;">Chennai, Tamilnadu, India</strong>
-                </div>
-            </div>
-            
-            <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                <span style="background: #1e40af; color: white; padding: 8px; border-radius: 50%; margin-right: 10px; font-size: 0.9rem;">📞</span>
-                <div>
-                    <span style="color: #555;">+91 824 867 6101</span>
-                </div>
-            </div>
-            
-            <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                <span style="background: #1e40af; color: white; padding: 8px; border-radius: 50%; margin-right: 10px; font-size: 0.9rem;">✉️</span>
-                <div>
-                    <a href="mailto:info@asmtechservices.com" style="color: #1a56db; text-decoration: none;">info@asmtechservices.com</a>
-                </div>
-            </div>
-            
-            <div style="background: linear-gradient(135deg, #dc2626, #ef4444); color: white; padding: 10px; border-radius: 6px; text-align: center; font-weight: bold;">
-                🕒 24/7 Support Available
-            </div>
+        <div class="process-step">
+          <span class="step-index">02</span>
+          <h3>Propose</h3>
+          <p>A clear quote covering hardware, labour and timelines — no bundled extras you didn't ask for.</p>
         </div>
-        
-        <p style="color: #666; font-size: 0.9rem; margin-top: 15px;">
-            🔍 Find us easily in Chennai. Visit our office for consultation.
-        </p>
+        <div class="process-step">
+          <span class="step-index">03</span>
+          <h3>Deploy</h3>
+          <p>Certified engineers install and configure servers, network or CCTV with minimal disruption to your team.</p>
+        </div>
+        <div class="process-step">
+          <span class="step-index">04</span>
+          <h3>Support</h3>
+          <p>Ongoing AMC coverage with 24/7 support, so issues get resolved before they become downtime.</p>
+        </div>
+      </div>
     </div>
-    
-    <!-- Right: Google Map (Small, Compact) -->
-    <div style="flex: 1; min-width: 250px; max-width: 350px;">
-        <div style="border: 2px solid #1a56db; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); height: 100%;">
-            <div style="background: #1e40af; color: white; padding: 10px 15px; text-align: center; font-weight: bold;">
-                📍 Find Our Office
-            </div>
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3884.8882649414295!2d80.30336109999999!3d13.169444399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTPCsDEwJzEwLjAiTiA4MMKwMTgnMTIuMSJF!5e0!3m2!1sen!2sin!4v1769862147752!5m2!1sen!2sin" 
-                width="100%" 
-                height="250" 
-                style="border:0; display: block;" 
-                allowfullscreen="" 
-                loading="lazy"
-                title="ASM Tech Services Location in Chennai">
-            </iframe>
-            <div style="background: #f0f7ff; padding: 10px; text-align: center; font-size: 0.85rem; color: #555;">
-                <strong>Chennai, Tamil Nadu</strong><br>
-                Easy to locate • Parking available
-            </div>
-        </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Common questions</p>
+        <h2>Frequently asked questions</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary>What IT services does ASM Tech Services offer in Chennai?</summary>
+          <p>We provide server installation and maintenance, network infrastructure setup, CCTV and surveillance systems, IT asset verification, desktop and laptop support, IT security solutions, and Annual Maintenance Contracts for businesses across Chennai.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do you offer Annual Maintenance Contracts (AMC) for IT hardware?</summary>
+          <p>Yes. Our AMCs cover servers, networking equipment, desktops, laptops and CCTV systems, with scheduled preventive checks and on-call support.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Which brands do you work with?</summary>
+          <p>We work with OEM brands including Dell, HPE, IBM, Cisco, TP-Link, D-Link, NEC, Panasonic, Samsung and Tata, depending on the project.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do you provide IT Support Technician training?</summary>
+          <p>Yes — our lab-focused training covers L1 and L2 support, hardware troubleshooting, OS installation, networking fundamentals and IT security basics.</p>
+        </details>
+      </div>
     </div>
+  </section>
 
-</div>
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container contact-grid">
+      <div class="contact-card">
+        <h3>Talk to our team</h3>
+        <div class="contact-row"><i class="fas fa-location-dot"></i><span>Chennai, Tamil Nadu, India</span></div>
+        <div class="contact-row"><i class="fas fa-phone"></i><a href="tel:+918248676101">+91 824 867 6101</a></div>
+        <div class="contact-row"><i class="fas fa-envelope"></i><a href="mailto:info@asmtechservices.com">info@asmtechservices.com</a></div>
+        <div class="contact-row"><i class="fas fa-clock"></i><span>Support available 24/7</span></div>
+        <a href="requirements.html" class="btn-primary" style="margin-top:8px;"><i class="fas fa-file-alt"></i> Get a Free Quote</a>
+      </div>
+      <div class="map-frame">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3884.8882649414295!2d80.30336109999999!3d13.169444399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTPCsDEwJzEwLjAiTiA4MMKwMTgnMTIuMSJF!5e0!3m2!1sen!2sin!4v1769862147752!5m2!1sen!2sin" loading="lazy" title="ASM Tech Services location in Chennai" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+</main>
 
-<!-- Footer Bottom Bar -->
-<div style="background: #1e40af; color: white; text-align: center; padding: 15px; font-size: 0.9rem;">
-    © 2024 ASM Tech Services. All rights reserved. | Quality IT Solutions & Services
-</div>
-    
-        
+<footer>
+  <div class="container">
+    <p><strong>ASM Tech Services</strong> — Quality IT Solutions & Services · Chennai, Tamil Nadu</p>
+    <p>© 2024–2026 ASM Tech Services. All rights reserved.</p>
+  </div>
+</footer>
 
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#' || targetId.includes('.html')) return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Active link highlighting
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', function() {
-                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-    </script>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href');
+    if(id==='#'||id.includes('.html'))return;
+    const el=document.querySelector(id);
+    if(el){e.preventDefault();window.scrollTo({top:el.offsetTop-80,behavior:'smooth'});}
+  });
+});
+</script>
 </body>
 </html>
